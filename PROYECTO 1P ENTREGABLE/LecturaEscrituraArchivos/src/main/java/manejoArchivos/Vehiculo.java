@@ -16,17 +16,15 @@ public class Vehiculo {
     private int año;
     private String chasis;
     private String color;
-    private boolean multa;
 
     //Constructor
-    public Vehiculo(String duenho, char placa, int modelo, int año, String chasis, String color, boolean multa) {
+    public Vehiculo(String duenho, char placa, int modelo, int año, String chasis, String color) {
         this.duenho = duenho;
         this.placa = placa;
         this.modelo = modelo;
         this.año = año;
         this.chasis = chasis;
         this.color = color;
-        this.multa = multa;
     }
 
     //Getters y Setters 
@@ -76,13 +74,5 @@ public class Vehiculo {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public boolean isMulta() {
-        return multa;
-    }
-
-    public void setMulta(boolean multa) {
-        this.multa = multa;
     }
 }
