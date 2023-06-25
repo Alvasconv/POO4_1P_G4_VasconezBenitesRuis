@@ -12,14 +12,14 @@ import java.util.Date;
 public class Multa {
 
     private int cedula;
-    private char placa;
+    private String placa;
     private float valor;
     private int puntos;
     private String infraccion;
     private Date fechaInfraccion;
     private Date fechaNotificacion;
 
-    public Multa(int cedula,char placa,String infraccion,float valor,Date fechaInfraccion,Date fechaNotificacion,int puntos) {
+    public Multa(int cedula,String placa,String infraccion,float valor,Date fechaInfraccion,Date fechaNotificacion,int puntos) {
         this.cedula = cedula;
         this.placa = placa;
         this.valor = valor;
@@ -37,11 +37,11 @@ public class Multa {
         this.cedula = cedula;
     }
 
-    public char getPlaca() {
+    public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(char placa) {
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
 
