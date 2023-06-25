@@ -49,16 +49,17 @@ public class SistemaVehicular {
             if(u.getUsuario().equals(usuario)){
                 if(u.getContrasenia().equals(pasword)){
                     if(u instanceof Cliente){
+                        Cliente c=(Cliente)u;
                         do{
-                            MostrarMenu((Cliente)u);
+                            MostrarMenu(c);
                             System.out.print("Ingrese una opcion:");
                             entrada=sc.nextLine();
                             switch(entrada){
                                 case"1":
-                                    ///
+                                    c.consultarMulta();
                                     break;
                                 case"2":
-                                    ///
+                                    c.agendarRevision();
                                     break;
                                 case"3":
                                     System.out.println("Adios");
@@ -69,19 +70,20 @@ public class SistemaVehicular {
                                 }
                             }while(!entrada.equals("3"));
                     }else{
+                        Operador o=(Operador)u;
                         do{
-                            MostrarMenu((Operador)u);
+                            MostrarMenu(o);
                             System.out.print("Ingrese una opcion:");
                             entrada=sc.nextLine();
                             switch(entrada){
                                 case"1":
-                                    ///
+                                    o.registrarPago();
                                     break;
                                 case"2":
-                                    ///
+                                    o.consultarMulta();
                                     break;
                                 case"3":
-                                    ///
+                                    o.consultarUsuario();
                                     break;
                                 case"4":
                                     System.out.println("Adios");
