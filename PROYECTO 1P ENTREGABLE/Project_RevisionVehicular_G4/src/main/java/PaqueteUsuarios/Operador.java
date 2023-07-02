@@ -2,6 +2,7 @@
 package PaqueteUsuarios;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Operador extends Usuario {
     
@@ -47,6 +48,31 @@ public class Operador extends Usuario {
     }
     
     public void registrarPago(){
+        Scanner sc = new Scanner (System.in);
+        System.out.println("********************************************************");
+        System.out.println("*                   REGISTRAR PAGO                     *");
+        System.out.println("********************************************************");
+        System.out.println("");
+        System.out.println("¿ Que desea pagar ?"+"\n1. Multas"+"\n2. Revision");
+        System.out.println("");
+        System.out.print("Elija una opcion: ");
+        int transaccion = sc.nextInt();
+        sc.nextLine();
+        System.out.println("¿ Que modo de pago va a usar ?"+"\n1. Efectivo"+"\n2. Tarjeta de credito");
+        System.out.println("");
+        System.out.print("Elija una opcion: ");
+        int tipoPago = sc.nextInt();
+        sc.nextLine();
+        
+        if (transaccion == 1 && tipoPago == 1){
+            System.out.print("Valor a pagar: ");
+        }
+        if (transaccion == 1 && tipoPago == 2){
+            
+        }
+        
+        
+       
         
     }
     
