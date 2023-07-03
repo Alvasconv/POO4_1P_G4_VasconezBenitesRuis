@@ -13,13 +13,13 @@ public class Multa {
 
     private int cedula;
     private String placa;
-    private float valor;
+    private double valor;
     private int puntos;
     private String infraccion;
     private Date fechaInfraccion;
     private Date fechaNotificacion;
 
-    public Multa(int cedula,String placa,String infraccion,float valor,Date fechaInfraccion,Date fechaNotificacion,int puntos) {
+    public Multa(int cedula,String placa,String infraccion,double valor,Date fechaInfraccion,Date fechaNotificacion,int puntos) {
         this.cedula = cedula;
         this.placa = placa;
         this.valor = valor;
@@ -45,11 +45,11 @@ public class Multa {
         this.placa = placa;
     }
 
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

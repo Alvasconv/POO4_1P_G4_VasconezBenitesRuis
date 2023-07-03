@@ -10,11 +10,11 @@ public abstract class Usuario {
     private String nombre;
     private String apellido;
     private int edad;
-    private String correo;
-    private String usuario;
-    private String contrasenia;
+    protected String correo;
+    protected String usuario;
+    protected String contrasenia;
     private int numTarjeta;
-    private int puntosLicencia;
+    protected int puntosLicencia;
 
     public int getNumTarjeta() {
         return numTarjeta;

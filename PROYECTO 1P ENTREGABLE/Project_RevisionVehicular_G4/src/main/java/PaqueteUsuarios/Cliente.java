@@ -5,13 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import manejoArchivos.ManejoArchivos;
+import static manejoArchivos.ManejoArchivos.LeeFichero;
+import manejoArchivos.Multa;
 import manejoArchivos.Vehiculo;
 
 public class Cliente extends Usuario {
     
     private Vehiculo vehiculo;
     private String tipoCliente;
-    public boolean multa ;
+    public boolean multa = true;
+    
+    
     
     //constructor de la clase cliente
 
@@ -79,25 +83,103 @@ public class Cliente extends Usuario {
     }
     
     
-    public void descuenPagoMultas(){
+    
+    public void agendarRevision(){
+        System.out.println("*********************************************************");
+        System.out.println("*                   AGENDAR REVISION                    *");
+        System.out.println("*********************************************************");
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Digite su cedula por favor: ");
+        String cedula = sc.nextLine();
+        ArrayList<String> datos = ManejoArchivos.LeeFichero("pagos.txt");
+        for (String linea : datos) {
+            String[] elementos = linea.trim().split(",");
+            if (Arrays.asList(elementos).contains(cedula)&&(Arrays.asList(elementos).get(5).equals("MULTA"))){
+                System.out.println("No tiene multas.");
+                System.out.println(" ");
+                System.out.println("             Horarios disponibles               ");
+                System.out.println("1. 10-06-2023    09:00");
+                System.out.println("2. 10-06-2023    11:00");
+                System.out.println("3. 10-06-2023    13:00");
+                System.out.println("4. 10-06-2023    15:00");
+                System.out.println("5. 11-06-2023    09:30");
+                System.out.println("6. 11-06-2023    12:00");
+                System.out.println("7. 11-06-2023    16:30");
+                System.out.println("8. 15-06-2023    09:00");
+                System.out.println("9. 15-06-2023    10:30");
+                System.out.println("10. 15-06-2023    15:30");
+                System.out.println("11. 18-06-2023    09:00");
+                System.out.println("12. 19-06-2023    09:00");
+                System.out.println("13. 19-06-2023    12:15");
+                System.out.println("14. 19-06-2023    17:30");
+                System.out.println("15. 20-06-2023    10:20");
+                System.out.println("");
+                System.out.print("Elija un horario para la revision: ");
+                int horario=sc.nextInt();
+                sc.nextLine();
+                double valRevision=150.0;
+                ArrayList<String> dato = ManejoArchivos.LeeFichero("usuarios.txt");
+                for (String p: dato ){
+                    String[] elemen = p.trim().split(",");
+                    if (Arrays.asList(elemen).contains(cedula)){
+                        if(elemen[6].equals('E')){
+                            valRevision = valRevision-(valRevision*0.2);
+                            
+                        }if(elemen[6].equals('S')){
+                            ArrayList<String> dato3 = ManejoArchivos.LeeFichero("multas.txt");
+                            for (String dat: dato3 ){
+                                String[] puntos = dat.trim().split(",");
+                                if (Arrays.asList(puntos).contains(cedula)){
+                                    valRevision = valRevision+(Integer.valueOf(puntos[6])*10);
+                                }
+                                
+                        }
+                    }
+                }
+                ArrayList<String> d = ManejoArchivos.LeeFichero("usuarios.txt");
+                for (String name: d ){
+                    String[] e = name.trim().split(",");
+                    if (Arrays.asList(e).contains(cedula)){
+                        String nombreCliente=e[1];
+                         System.out.println("");
+                        System.out.println("*******************************************************************************************");
+                        System.out.println(nombreCliente+" ,se ha agendado su cita para el "+horario);
+                        System.out.println("Valor a pagar: "+valRevision);
+                        System.out.println("Puede pagar su cita hasta 24 horas antes de la cita. De lo contrario la cita se cancelara.");
+                        System.out.println("*******************************************************************************************");
+                    
+                    
+                    }
+                
+                }
+               
+                
+                
+                
+                
+                
+                
+                
+            }
+            
         
         
+        }
+        
+    }        
     }
-    
-    public void agendarRevision(){ // aqui si tiene que retorna algo segun lo que nosotros indicamos en el proyecto XD
-        
-    }
-    
-    public void pagarMulta(){
-       
-        
-        
-        
-    }
-    
-    
-    
-    
-    
     
 }
+    
+   
+    
+
+    
+        
+    
+    
+    
+  
+  
+    
+

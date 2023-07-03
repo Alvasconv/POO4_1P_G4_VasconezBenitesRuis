@@ -9,8 +9,16 @@ import PaqueteUsuarios.Operador;
 import java.util.ArrayList;
 import java.util.Scanner;
 import PaqueteUsuarios.Usuario;
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import manejoArchivos.*;
 import manejoArchivos.Multa;
-import manejoArchivos.Vehiculo;
+//import manejoArchivos.Vehiculo;
 /**
  *
  * @author Julian Ruiz
@@ -18,9 +26,10 @@ import manejoArchivos.Vehiculo;
 public class SistemaVehicular {
     ArrayList<Usuario> usuarios=new ArrayList<>();
     ArrayList<Vehiculo> vehiculos=new ArrayList<>();
-    ArrayList<Multa> listaMultas=new ArrayList<>();
-
-    
+    //static ArrayList<Multa> listaMultas = new ArrayList<>();
+ 
+    //ArrayList<String> datos = ManejoArchivos.LeeFichero("multas.txt");
+           
     public void MostrarMenu(Cliente usuario){
         System.out.println("1.Consultar Multas");
         System.out.println("2. Agendar revision tecnica");
@@ -99,8 +108,41 @@ public class SistemaVehicular {
         }
     }
      
-     
-     public static void main (String[]args){
-         
+     public static ArrayList mostrarListaMultas() {
+        ArrayList<String> datos = ManejoArchivos.LeeFichero("multas.txt");
+        ArrayList<Multa>listaMultas = new ArrayList<>(); 
+        for (String linea : datos) {
+            String[] elementos = linea.trim().split(",");
+            int ced = Integer.valueOf(elementos[0]);
+            String placa = elementos[1];
+            String descr = elementos[2];
+            double valor = Double.parseDouble(elementos[3]);
+            
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+            Date fechainfraccion = null;
+            try {
+                fechainfraccion = formato.parse(elementos[4]);
+            } catch (ParseException ex) {
+                Logger.getLogger(SistemaVehicular.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            SimpleDateFormat formato1 = new SimpleDateFormat("dd-MM-yyyy");
+            Date fechaNotificacion = null;
+            try {
+                fechaNotificacion = formato1.parse(elementos[5]);
+            } catch (ParseException ex) {
+                Logger.getLogger(SistemaVehicular.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int puntos = Integer.valueOf(elementos[6]);
+            Multa m = new Multa(ced, placa, descr, valor,fechainfraccion, fechaNotificacion, puntos);
+            listaMultas.add(m);
+            }
+        return listaMultas;
      }
+    
+     
+     public static void main(String[] args) {
+        ArrayList <String> o= mostrarListaMultas();
+         System.out.println(o);
+    }
 }

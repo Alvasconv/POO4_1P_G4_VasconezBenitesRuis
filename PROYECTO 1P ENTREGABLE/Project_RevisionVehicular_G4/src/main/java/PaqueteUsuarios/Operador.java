@@ -2,7 +2,9 @@
 package PaqueteUsuarios;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
+import manejoArchivos.*;
 
 public class Operador extends Usuario {
     
@@ -48,6 +50,9 @@ public class Operador extends Usuario {
     }
     
     public void registrarPago(){
+        Random r = new Random ();
+        int aleatorio = r.nextInt(500000000);
+        String codigoPago= String.valueOf(aleatorio);
         Scanner sc = new Scanner (System.in);
         System.out.println("********************************************************");
         System.out.println("*                   REGISTRAR PAGO                     *");
@@ -63,11 +68,89 @@ public class Operador extends Usuario {
         System.out.print("Elija una opcion: ");
         int tipoPago = sc.nextInt();
         sc.nextLine();
+        System.out.print("Por favor digite su numero de cedula: ");
+        String cedu=sc.nextLine();
         
         if (transaccion == 1 && tipoPago == 1){
             System.out.print("Valor a pagar: ");
+            double monto=sc.nextInt();
+            //String converMonto = Double.valueOf(monto);
+            sc.nextLine();
+            
+            System.out.println("¿ Desea proceder con el pago ?"+"\n1. Si"+"\n2. No");
+            System.out.print("Elija una opcion: ");
+            int confirmacion = sc.nextInt();
+            sc.nextLine();
+            if (confirmacion == 1){
+                System.out.println("*********************************************************");
+                System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
+                System.out.println("*********************************************************");
+                
+                ManejoArchivos.EscribirArchivo("pagos.txt",(codigoPago+" "+cedu+" "+monto+" "+'E'+" "+monto+" "+"MULTA")); 
+            }else
+                System.out.println("Error de transaccion");
+   
         }
-        if (transaccion == 1 && tipoPago == 2){
+        else if (transaccion == 1 && tipoPago == 2){
+            
+            System.out.print("Valor a pagar: ");
+            double monto=sc.nextInt();
+            double montoFinal = monto+(monto*0.1);
+            System.out.println("Su pago final es de: "+montoFinal);
+            
+            System.out.println("¿ Desea proceder con el pago ?"+"\n1. Si"+"\n2. No");
+            System.out.print("Elija una opcion: ");
+            int confirmacion = sc.nextInt();
+            sc.nextLine();
+            if (confirmacion == 1){
+                System.out.println("*********************************************************");
+                System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
+                System.out.println("*********************************************************");
+                
+                ManejoArchivos.EscribirArchivo("pagos.txt",(codigoPago+" "+cedu+" "+monto+" "+'T'+" "+montoFinal+" "+"MULTA")); 
+            }else
+                System.out.println("Error de transaccion");
+        
+        }    
+        else if (transaccion == 2 && tipoPago == 1){
+            
+            System.out.print("Valor a pagar: ");
+            double monto=sc.nextInt();
+            //double montoFinal = monto+(monto*0.1);
+            //System.out.println("Su pago final es de: "+montoFinal);
+            sc.nextLine();
+            System.out.println("¿ Desea proceder con el pago ?"+"\n1. Si"+"\n2. No");
+            System.out.print("Elija una opcion: ");
+            int confirmacion = sc.nextInt();
+            sc.nextLine();
+            if (confirmacion == 1){
+                System.out.println("*********************************************************");
+                System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
+                System.out.println("*********************************************************");
+                
+                ManejoArchivos.EscribirArchivo("pagos.txt",(codigoPago+" "+cedu+" "+monto+" "+'E'+" "+monto+" "+"REVISION")); 
+            }else
+                System.out.println("Error de transaccion");
+            
+        }
+        else if (transaccion == 2 && tipoPago == 2){
+            
+            System.out.print("Valor a pagar: ");
+            double monto=sc.nextInt();
+            double montoFinal = monto+(monto*0.1);
+            System.out.println("Su pago final es de: "+montoFinal);
+            System.out.println("¿ Desea proceder con el pago ?"+"\n1. Si"+"\n2. No");
+            System.out.print("Elija una opcion: ");
+            int confirmacion = sc.nextInt();
+            sc.nextLine();
+            if (confirmacion == 1){
+                System.out.println("*********************************************************");
+                System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
+                System.out.println("*********************************************************");
+                
+                ManejoArchivos.EscribirArchivo("pagos.txt",(codigoPago+" "+cedu+" "+monto+" "+'T'+" "+montoFinal+" "+"REVISION")); 
+            }else
+                System.out.println("Error de transaccion");
             
         }
         
