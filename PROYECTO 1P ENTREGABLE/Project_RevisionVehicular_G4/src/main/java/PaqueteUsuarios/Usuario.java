@@ -4,54 +4,42 @@ package PaqueteUsuarios;
 import PaquetesEnum.UsuarioPerfil;
 
 
-public abstract class Usuario {
+public class Usuario {
     
     private String cedula;
     private String nombre;
     private String apellido;
     private int edad;
-    protected String correo;
-    protected String usuario;
-    protected String contrasenia;
-    private int numTarjeta;
-    protected int puntosLicencia;
-
-    public int getNumTarjeta() {
-        return numTarjeta;
-    }
-
-    public void setNumTarjeta(int numTarjeta) {
-        this.numTarjeta = numTarjeta;
-    }
-
-    public int getPuntosLicencia() {
-        return puntosLicencia;
-    }
-
-    public void setPuntosLicencia(int puntosLicencia) {
-        this.puntosLicencia = puntosLicencia;
-    }
+    private String correo;
+    private String usuario;
+    private String contrasenia;
+    private String perfil;
     
     //CONTRUCTORES
 
+
   
 
-    public Usuario(String usuario, String contrasenia, int puntosLicencia) {
+    public Usuario(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, String perfil) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
-        this.puntosLicencia = puntosLicencia;
-    }
-    
-    
-
-    public Usuario(String cedula, String nombre, String apellido, int edad) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.perfil=perfil;
     }
     
+    
     // Implementacion de los getters ands setters
+    
+     public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
 
     public String getCedula() {
         return cedula;
@@ -109,10 +97,17 @@ public abstract class Usuario {
         this.contrasenia = contrasenia;
     }
     
+
+    @Override
+    public String toString() {
+        return cedula + " " + nombre + " " + apellido + " " + edad + " " + correo + " " + usuario + " " + contrasenia + " " + perfil ;
+    }
     
-   // Metodo abstracto;
     
-    public abstract void consultarMulta();
+   
+    public void consultarMulta(){
+        
+    }
     
     
         

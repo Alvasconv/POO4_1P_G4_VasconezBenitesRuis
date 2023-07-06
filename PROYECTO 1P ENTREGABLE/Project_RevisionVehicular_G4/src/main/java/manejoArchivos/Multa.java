@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class Multa {
 
-    private int cedula;
+    private String cedula;
     private String placa;
     private double valor;
     private int puntos;
@@ -19,7 +19,7 @@ public class Multa {
     private Date fechaInfraccion;
     private Date fechaNotificacion;
 
-    public Multa(int cedula,String placa,String infraccion,double valor,Date fechaInfraccion,Date fechaNotificacion,int puntos) {
+    public Multa(String cedula,String placa,String infraccion,double valor,Date fechaInfraccion,Date fechaNotificacion,int puntos) {
         this.cedula = cedula;
         this.placa = placa;
         this.valor = valor;
@@ -29,11 +29,11 @@ public class Multa {
         this.fechaNotificacion = fechaNotificacion;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
@@ -84,5 +84,15 @@ public class Multa {
     public void setFechaNotificacion(Date fechaNotificacion) {
         this.fechaNotificacion = fechaNotificacion;
     }
+
+    @Override
+    public String toString() {
+        return cedula + " " + placa + " " + infraccion + " " + valor +" "+fechaInfraccion + " " + fechaNotificacion + " "+puntos;
+    }
+    
+    
+    
+    
+    
     
 }

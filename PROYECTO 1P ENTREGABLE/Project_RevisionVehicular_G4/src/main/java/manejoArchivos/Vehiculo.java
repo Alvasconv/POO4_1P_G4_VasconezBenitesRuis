@@ -11,23 +11,33 @@ package manejoArchivos;
 public class Vehiculo {
     
     private String duenho;
-    private char placa;
-    private int modelo;
+    private String placa;
+    private String modelo;
     private int año;
     private String chasis;
     private String color;
+    private String marca;
 
     //Constructor
-    public Vehiculo(String duenho, char placa, int modelo, int año, String chasis, String color) {
+    public Vehiculo(String duenho, String placa, String modelo, String marca, int año, String chasis, String color) {
         this.duenho = duenho;
         this.placa = placa;
         this.modelo = modelo;
         this.año = año;
         this.chasis = chasis;
         this.color = color;
+        this.marca = marca;
     }
 
     //Getters y Setters 
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
     public String getDuenho() {
         return duenho;
     }
@@ -36,19 +46,19 @@ public class Vehiculo {
         this.duenho = duenho;
     }
 
-    public char getPlaca() {
+    public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(char placa) {
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
 
-    public int getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(int modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
@@ -70,6 +80,11 @@ public class Vehiculo {
 
     public String getColor() {
         return color;
+    }
+
+    @Override
+    public String toString() {
+        return duenho +" "+ placa +" "+ modelo +" "+ año +" "+ chasis +" "+ color +" "+ marca ;
     }
 
     public void setColor(String color) {
