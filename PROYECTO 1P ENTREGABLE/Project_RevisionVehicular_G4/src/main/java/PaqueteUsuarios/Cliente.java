@@ -136,12 +136,17 @@ public class Cliente extends Usuario {
         }
                                 
     }
-               
+        
     @Override
     public String toString() {
         return super.getCedula()+" "+super.getNombre()+" "+ super.getApellido()+" " + super.getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+numTarjeta+" "+ puntosLicencia +" "+super.getPerfil() ;
     }
     
+     public void MostrarMenu(){
+        System.out.println("1.Consultar Multas");
+        System.out.println("2. Agendar revision tecnica");
+        System.out.println("3.Salir");
+    }
  
     
     

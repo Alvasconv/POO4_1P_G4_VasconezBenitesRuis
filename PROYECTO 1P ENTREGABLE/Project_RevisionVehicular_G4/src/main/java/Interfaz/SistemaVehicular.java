@@ -22,7 +22,7 @@ import manejoArchivos.*;
  * @author Julian Ruiz
  */
 public class SistemaVehicular {
-    public static ArrayList <Usuario> usuarios=new ArrayList();
+    public static ArrayList <Usuario> usuarios=new ArrayList<>();
     public static ArrayList<Vehiculo> vehiculos=new ArrayList<>();
     public static ArrayList<Multa> listaMultas = new ArrayList<>();
     
@@ -139,95 +139,83 @@ public class SistemaVehicular {
 //          
 //        }
         
-        
-        
-        
-        
-
     }
     
-    
-    
-    
- 
-    
-           
-    public void MostrarMenu(Cliente usuario){
-        System.out.println("1.Consultar Multas");
-        System.out.println("2. Agendar revision tecnica");
-        System.out.println("3.Salir");
+    public static ArrayList<Usuario> getUsuarios(){
+        return SistemaVehicular.usuarios;
     }
     
-    public void MostrarMenu(Operador usuario){
-        System.out.println("1.Registar pagos");
-        System.out.println("2.Consultar multas clientes");
-        System.out.println("3.Consultar usuarios");
-        System.out.println("4.Salir");
+    public static ArrayList<Vehiculo> getVehiculos(){
+        return SistemaVehicular.vehiculos;
     }
     
-//     public void IniciarSesion(){
-//         System.out.println("************************************************");
-//         System.out.println("             Bienvenido al sistema              ");
-//         System.out.println("************************************************");
-//         Scanner sc=new Scanner(System.in);
-//         System.out.print("Usuario:");
-//         String usuario=sc.nextLine();
-//         sc.nextLine();
-//         System.out.print("Contrasenia:");
-//         String pasword=sc.nextLine();
-//         String entrada="";
-//         for(Object u:usuarios){
-//            if(u.getUsuario().equals(usuario)){
-//                if(u.getContrasenia().equals(pasword)){
-//                    if(u instanceof Cliente){
-//                        Cliente c=(Cliente)u;
-//                        do{
-//                            MostrarMenu(c);
-//                            System.out.print("Ingrese una opcion:");
-//                            entrada=sc.nextLine();
-//                            switch(entrada){
-//                                case"1":
-//                                    c.consultarMulta();
-//                                    break;
-//                                case"2":
-//                                    c.agendarRevision();
-//                                    break;
-//                                case"3":
-//                                    System.out.println("Adios");
-//                                    break;
-//                                default:
-//                                    System.out.println("Opcion invalida");
-//                                    break;
-//                                }
-//                            }while(!entrada.equals("3"));
-//                    }else{
-//                        Operador o=(Operador)u;
-//                        do{
-//                            MostrarMenu(o);
-//                            System.out.print("Ingrese una opcion:");
-//                            entrada=sc.nextLine();
-//                            switch(entrada){
-//                                case"1":
-//                                    o.registrarPago();
-//                                    break;
-//                                case"2":
-//                                    o.consultarMulta();
-//                                    break;
-//                                case"3":
-//                                    o.consultarUsuario();
-//                                    break;
-//                                case"4":
-//                                    System.out.println("Adios");
-//                                    break;
-//                                default:
-//                                    System.out.println("Opcion invalida");
-//                                    break;
-//                                }
-//                            }while(!entrada.equals("4"));
-//                        }   
-//                }
-//            }
-//        }
-//    }
+    public static ArrayList<Multa> getListaMultas(){
+        return SistemaVehicular.listaMultas;
+    }
+    
+      
+    
+    public void IniciarSesion(){
+        System.out.println("************************************************");
+        System.out.println("             Bienvenido al sistema              ");
+        System.out.println("************************************************");
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Usuario:");
+        String usuario=sc.nextLine();
+        System.out.println("Contrasenia:");
+        String pasword=sc.nextLine();
+        String entrada="";
+        for(Usuario u:usuarios){
+            if((usuario.equals(u.getUsuario()))&&(pasword.equals(u.getContrasenia()))){
+                if(u instanceof Cliente){
+                    Cliente c=(Cliente)u;
+                    do{
+                        c.MostrarMenu();
+                        System.out.print("Ingrese una opcion:");
+                        entrada=sc.nextLine();
+                        switch(entrada){
+                            case"1":
+                                c.consultarMulta();
+                                break;
+                            case"2":
+                                c.agendarRevision();
+                                break;
+                            case"3":
+                                System.out.println("Adios");
+                                break;
+                            default:
+                                System.out.println("Opcion invalida");
+                        }
+                    }while(!entrada.equals("3"));
+                }else{
+                    Operador o=(Operador)u;
+                    do{
+                        o.MostrarMenu();
+                        System.out.println("Ingrese una opcion");
+                        entrada=sc.nextLine();
+                        switch(entrada){
+                            case"1":
+                                o.registrarPago();
+                                break;
+                            case"2":
+                                o.consultarMulta();
+                                break;
+                            case"3":
+                                o.consultarUsuarios();
+                                break;
+                            case"4":
+                                System.out.println("Adios");
+                                break;
+                            default:
+                                System.out.println("Opcion invalida");
+                                break;
+                        }
+                    }while(!entrada.equals("4"));
+                }
+            }else{
+                System.out.println("ERROR");
+            }
+        }
+    }
           
 }

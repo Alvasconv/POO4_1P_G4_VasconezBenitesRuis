@@ -1,19 +1,18 @@
 
 package PaqueteUsuarios;
 
+import Interfaz.SistemaVehicular;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import manejoArchivos.*;
 import static Interfaz.SistemaVehicular.*;
+import java.util.List;
 
 public class Operador extends Usuario {
     
     private int sueldo;
-    
-    //private ArrayList listaClientes;
    
-
     public Operador(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, int sueldo, String perfil) {
         super(cedula,nombre,apellido,edad,usuario,contrasenia,perfil);
         this.sueldo = sueldo;
@@ -34,9 +33,20 @@ public class Operador extends Usuario {
     
     @Override
     public void consultarMulta(){
-        
-        System.out.println("HOLA SOY OPERADOR");  // ESTE TBN ES UN EJEMPLO NOMAS
-        
+        System.out.println("***********************************************");
+        System.out.println("               CONSULTAR MULTAS                ");
+        System.out.println("***********************************************");
+        Scanner sc=new Scanner (System.in);
+        List meses=List.of("ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE");
+        System.out.print("Ingrese el mes a consultar:");
+        String mes=sc.nextLine();
+        int ind=meses.indexOf(mes);
+        for(Multa m:listaMultas){
+            int m2=m.getFechaInfraccion().getMonth();
+            if(m2==ind){
+                System.out.println(m.getCedula()+"|"+m.getPlaca()+"|"+m.getInfraccion()+"|"+m.getValor()+"|"+m.getFechaInfraccion()+"|"+m.getFechaNotificacion()+"|"+m.getPuntos());
+            }
+        }
     }
     
     /* 
@@ -197,19 +207,43 @@ public class Operador extends Usuario {
         return super.getCedula()+" "+super.getNombre()+" "+ super.getApellido()+" " + super.getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+sueldo+" "+super.getPerfil() ;
     }
     
-    public void consultarUsuario(){
-        
+    public void consultarUsuarios(){
+        System.out.println("***********************************************");
+        System.out.println("              CONSULTAR USUARIO                ");
+        System.out.println("***********************************************");
+        for(Usuario u:usuarios){
+            String nom=u.getNombre();
+            String perfil;
+            String ced;
+            switch (u.getPerfil()) {
+                case "S":
+                    perfil="Cliente Estandar";
+                    ced=u.getCedula();
+                    System.out.println(nom+" | "+perfil+" | "+ced);
+                    break;
+                case "E":
+                    perfil="Cliente Estrella";
+                    ced=u.getCedula();
+                    System.out.println(nom+" | "+perfil+" | "+ced);
+                    break;
+                default:
+                    perfil="Operador";
+                    Operador o=(Operador)u;
+                    sueldo=o.getSueldo();
+                    System.out.println(nom+" | "+perfil+" | "+sueldo);
+                    break;
+            }
+        }
+    }
+    
+    public void MostrarMenu(){
+        System.out.println("1.Registar pagos");
+        System.out.println("2.Consultar multas clientes");
+        System.out.println("3.Consultar usuarios");
+        System.out.println("4.Salir");
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     
 }
