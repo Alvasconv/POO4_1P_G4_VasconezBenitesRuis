@@ -164,7 +164,7 @@ public class Cliente extends Usuario {
                 System.out.println("Puede pagar su cita hasta 24 horas antes de la cita.");
                 System.out.println("De lo contrario la cita se cancelara.");
                 System.out.println("******************************************************************************************");
-                String ticketRevision= codigoRevision+","+m.getCedula()+","+m.getPlaca()+","+horarioSeleccionado+","+valRevision;
+                String ticketRevision= codigoRevision+","+identifi+","+matricula+","+horarioSeleccionado+","+valRevision;
                 Revision review = new Revision (codigoRevision,identifi,matricula,horarioSeleccionado,valRevision);
                 revisiones.add(review);
                 ManejoArchivos.EscribirArchivo("AgendaRevisiones.txt",ticketRevision);

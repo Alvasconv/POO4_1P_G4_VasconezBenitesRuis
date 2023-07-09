@@ -13,6 +13,7 @@ import static Interfaz.SistemaVehicular.*;
  */
 public class Main {
     public static void main(String[]args){
-        
+        SistemaVehicular veg= new SistemaVehicular ();
+        veg.inicioSesion();
     }
 }

@@ -31,8 +31,8 @@ public class SistemaVehicular {
     
     
     
-    public static void main(String[] args) {
-        
+    //public static void main(String[] args) {
+    public SistemaVehicular (){    
         // A CONTINUACION PROCEDO A CARGAR MI LISTA DE MULTAS CON LOS DATOS DEL ARCHIVO MULTAS.TXT
         ArrayList<String> datosMultas = ManejoArchivos.LeeFichero("multas.txt");
         
@@ -131,8 +131,9 @@ public class SistemaVehicular {
             vehiculos.add(car);
 
         }
-        
+    } //pilas con este corchete no va    
         // A continuacion presento el menu
+    public void inicioSesion(){
         boolean ingreso = false;
         while (!ingreso){
             System.out.println("************************************************");

@@ -112,17 +112,14 @@ public class Operador extends Usuario {
                     System.out.println("*********************************************************");
                     String facturaPagoMulta= codigoPago+","+cedu+","+valorMulta+","+"E"+","+valorMulta+","+"MULTA";
                     ManejoArchivos.EscribirArchivo("pagos.txt", facturaPagoMulta);
-//                  Al confirmarse el pago esta linea deberia eliminar ese objeto de la lista de multa   
-                    for(Multa nu:listaMultas){
+//                  Al confirmarse el pago esta linea deberia eliminar ese objeto de la lista de multa
+                    for (int i = 0; i < listaMultas.size(); i++) {
+                        //int indice =listaMultas.indexOf(i);
+                        if (cedu.equals(listaMultas.get(i).getCedula())) {
+                            listaMultas.remove(listaMultas.get(i));
+                        } 
                         
-                        int indice =listaMultas.indexOf(nu);
-                        if (cedu.equals(nu.getCedula())){
-                            listaMultas.remove(indice);
-                        }
                     }
-//                  pero no lo hace :(
-
-
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
