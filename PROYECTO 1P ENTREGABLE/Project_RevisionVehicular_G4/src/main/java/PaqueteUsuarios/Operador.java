@@ -113,13 +113,16 @@ public class Operador extends Usuario {
                     String facturaPagoMulta= codigoPago+","+cedu+","+valorMulta+","+"E"+","+valorMulta+","+"MULTA";
                     ManejoArchivos.EscribirArchivo("pagos.txt", facturaPagoMulta);
 //                  Al confirmarse el pago esta linea deberia eliminar ese objeto de la lista de multa
-                    for (int i = 0; i < listaMultas.size(); i++) {
-                        //int indice =listaMultas.indexOf(i);
+                    ArrayList<Multa> listaMultaCopia=listaMultas;
+                    int i=0;
+                    while(i<listaMultas.size()) {
                         if (cedu.equals(listaMultas.get(i).getCedula())) {
-                            listaMultas.remove(listaMultas.get(i));
+                            listaMultaCopia.remove(i);
+                            i++;
                         } 
                         
                     }
+                    listaMultas=listaMultaCopia;
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
