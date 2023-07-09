@@ -113,16 +113,17 @@ public class Operador extends Usuario {
                     String facturaPagoMulta= codigoPago+","+cedu+","+valorMulta+","+"E"+","+valorMulta+","+"MULTA";
                     ManejoArchivos.EscribirArchivo("pagos.txt", facturaPagoMulta);
 //                  Al confirmarse el pago esta linea deberia eliminar ese objeto de la lista de multa
-                    ArrayList<Multa> listaMultaCopia=listaMultas;
-                    int i=0;
-                    while(i<listaMultas.size()) {
-                        if (cedu.equals(listaMultas.get(i).getCedula())) {
-                            listaMultaCopia.remove(i);
-                            i++;
-                        } 
-                        
-                    }
-                    listaMultas=listaMultaCopia;
+                    ArrayList<Multa> listaMultaCopia=new ArrayList<>();
+                   for(int i =0;i<listaMultas.size();i++){
+                       if(cedu.equals(listaMultas.get(i).getCedula())){
+                           listaMultaCopia.add(listaMultas.get(i));
+                       }
+                   }
+                   for(int i=0;i<listaMultaCopia.size();i++){
+                       if(listaMultas.contains(listaMultaCopia.get(i))){
+                           listaMultas.remove(listaMultaCopia.get(i));
+                       }
+                   }
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
@@ -152,10 +153,22 @@ public class Operador extends Usuario {
                     System.out.println("*********************************************************");
                     String facturaPagoMulta= codigoPago+","+cedu+","+valorMulta+","+"T"+","+montoFinal+","+"MULTA";
                     ManejoArchivos.EscribirArchivo("pagos.txt", facturaPagoMulta);
+                    ArrayList<Multa> listaMultaCopia=new ArrayList<>();
+                    for(int i =0;i<listaMultas.size();i++){
+                       if(cedu.equals(listaMultas.get(i).getCedula())){
+                           listaMultaCopia.add(listaMultas.get(i));
+                       }
+                   }
+                   for(int i=0;i<listaMultaCopia.size();i++){
+                       if(listaMultas.contains(listaMultaCopia.get(i))){
+                           listaMultas.remove(listaMultaCopia.get(i));
+                       }
+                   }
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
                     continuarPago=rsta;
+                    
                 } else {
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");

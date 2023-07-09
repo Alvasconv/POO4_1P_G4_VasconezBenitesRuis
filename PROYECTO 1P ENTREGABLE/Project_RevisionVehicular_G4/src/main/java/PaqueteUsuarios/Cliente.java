@@ -20,7 +20,7 @@ public class Cliente extends Usuario {
     public boolean multa = true;
     public static ArrayList <Revision> revisiones=new ArrayList<>();
     
-    
+
     
     //constructor de la clase cliente
 
@@ -76,9 +76,9 @@ public class Cliente extends Usuario {
                 System.out.println(mult.getCedula()+" "+ mult.getPlaca()+ " " + mult.getInfraccion()+ " " + mult.getValor() +" "+mult.getFechaInfraccion() + " " + mult.getFechaNotificacion() + " "+mult.getPuntos());
                 valortotal += mult.getValor();
                         
-            }else{
-                System.out.println("USTED NO POSEE MULTAS");
-                break;
+//            }else{
+//                System.out.println("USTED NO POSEE MULTAS");
+//                break;
             }
             
         }
@@ -91,7 +91,7 @@ public class Cliente extends Usuario {
     
     // METODO AGENDAR REVISION. NOTA " TODAVIA FALTA DE MODIFICAR COSAS ";
     public void agendarRevision(){
-     
+        String horarioSeleccionado= null;
         String codigoRevision= String.valueOf((int)(Math.random()*5000000+1000000));
         System.out.println("*********************************************************");
         System.out.println("*                   AGENDAR REVISION                    *");
@@ -115,11 +115,29 @@ public class Cliente extends Usuario {
         String placa = sc.nextLine();
         placa = placa.toUpperCase();
         double valRevision = 150.0;
+        int puntosMul=0;
+        ArrayList<String> bool=new ArrayList<>();
+        boolean tieneMulta=false;
         for (Multa m: listaMultas){
             if (m.getPlaca().equals(placa)){
+                puntosMul+=m.getPuntos();
+                String x="S";
+                bool.add(x);
+            }else{
+                String x="N";
+                bool.add(x);
+            }
+        }
+        for(String s:bool){
+            if(s.equals("S")){
+            tieneMulta=true;
+            break;
+            }
+        }
+        if(tieneMulta){
                 System.out.println("Usted posee multas pendientes, por favor acercarse a pagar");
                 
-            }else{
+        }else{
  
                 System.out.println("No tiene multas.");
                 System.out.println(" ");
@@ -132,8 +150,8 @@ public class Cliente extends Usuario {
                 int horario = sc.nextInt();
                 sc.nextLine();
                 
-                String horarioSeleccionado= horarios.get(horario-1);
-                
+                horarioSeleccionado= horarios.get(horario-1);
+        
                 // estos atributos son para mi objeto de tipo revision
                 String name="null";
                 String identifi ="null";
@@ -146,7 +164,7 @@ public class Cliente extends Usuario {
                         matricula=v.getPlaca();
                         for (Usuario u : usuarios) {
                             if (id.equals(u.getCedula()) && u.getPerfil().equals("S")) {
-                                valRevision = valRevision + (m.getPuntos() * 10);
+                                valRevision = valRevision + (puntosMul * 10);
                                 name= u.getNombre()+" "+u.getApellido();
                                 
                             } else if (id.equals(u.getCedula()) && u.getPerfil().equals("E")) {
@@ -169,10 +187,9 @@ public class Cliente extends Usuario {
                 revisiones.add(review);
                 ManejoArchivos.EscribirArchivo("AgendaRevisiones.txt",ticketRevision);
             }
-        break;    
+        
         }
-    }
-                                
+                         
 
         
     @Override
