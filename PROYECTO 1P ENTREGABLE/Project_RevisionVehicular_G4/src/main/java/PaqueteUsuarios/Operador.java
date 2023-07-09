@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 import manejoArchivos.*;
 import static Interfaz.SistemaVehicular.*;
+import static PaqueteUsuarios.Cliente.*;
 import java.util.List;
 
 public class Operador extends Usuario {
@@ -30,46 +31,63 @@ public class Operador extends Usuario {
         this.sueldo = sueldo;
     }
     
-    
-    @Override
+    @Override 
     public void consultarMulta(){
-        System.out.println("***********************************************");
-        System.out.println("               CONSULTAR MULTAS                ");
-        System.out.println("***********************************************");
-        Scanner sc=new Scanner (System.in);
-        List meses=List.of("ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE");
-        System.out.print("Ingrese el mes a consultar:");
-        String mes=sc.nextLine();
-        int ind=meses.indexOf(mes);
-        for(Multa m:listaMultas){
-            int m2=m.getFechaInfraccion().getMonth();
-            if(m2==ind){
-                System.out.println(m.getCedula()+"|"+m.getPlaca()+"|"+m.getInfraccion()+"|"+m.getValor()+"|"+m.getFechaInfraccion()+"|"+m.getFechaNotificacion()+"|"+m.getPuntos());
-            }
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Ingrese un mes para consultar las multas: ");
+        String mes = sc.nextLine();  // MAYO
+        mes = mes.toUpperCase();
+        
+        System.out.println("|------------------------------------------------------------------------------------------------------------------------------|");
+        System.out.println("|                                                 CONDUCTORES MULTADOS DEL MES " + mes+ "                                           |");
+        System.out.println("|------------------------------------------------------------------------------------------------------------------------------|");
+        System.out.println("| CEDULA | MATRICULA | INFRACCION | VALOR A PAGAR | FECHA DE INFRACCION | FECHA DE INFRACCION | FECHA DE NOTIFICACION | PUNTOS |");
+        System.out.println("|------------------------------------------------------------------------------------------------------------------------------|");
+        
+        List meses = List.of("ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE");
+   
+        int ind = meses.indexOf(mes);
+        for (Multa mult : listaMultas) {
+            // validamos si la cedula y placa ingresada estan en la lista de multas
+                int m = mult.getFechaInfraccion().getMonth();               
+                if(m == ind){
+                    System.out.println(mult.getCedula()+" , "+ mult.getPlaca()+ " , " + mult.getInfraccion()+ " , " + mult.getValor() +" , "+mult.getFechaInfraccion() + " , " + mult.getFechaNotificacion() + " , "+mult.getPuntos());
+                }
+           }
+        System.out.println("No tiene multas");
         }
-    }
+    
+    
+
     
     /* 
     CREACION DEL METODO REGISTRAR PAGO. NOTAA" FALTA DE HACER QUE A LO QUE REGISTRA EL PAGO LA MULTA DESAPARECE
     DE LA LISTA DE MULTAS
     */
     public void registrarPago(){
-        Random r = new Random ();
-        int aleatorio = r.nextInt(500000000);
-        String codigoPago= String.valueOf(aleatorio);
+        
+        String codigoPago= String.valueOf((int)(Math.random()*500000000+100000000));
         Scanner sc = new Scanner (System.in);
         System.out.println("********************************************************");
         System.out.println("*                   REGISTRAR PAGO                     *");
         System.out.println("********************************************************");
         System.out.println("");
-        System.out.print("Por favor digite su numero de cedula: ");
+        System.out.print("Por favor digite numero de cedula: ");
         String cedu=sc.nextLine();
-        double valorMulta = 0;
+        double valorMulta = 0.0;
         for (Multa m: listaMultas){
             if (cedu.equals(m.getCedula())){
                 valorMulta += m.getValor();
             }            
         }
+        double valorRevision=0.0;
+        for (Revision revi : revisiones){
+             if(cedu.equals(revi.getCedula())){
+                 valorRevision+=revi.getValoRevision();
+             }       
+        }
+
+        
         String continuarPago = "SI";
         while (continuarPago.equals("SI")){
             System.out.println("¿ Que desea pagar ?"+"\n1. Multas"+"\n2. Revision");
@@ -83,8 +101,7 @@ public class Operador extends Usuario {
             int tipoPago = sc.nextInt();
             sc.nextLine();
             if (transaccion == 1 && tipoPago == 1) {
-                System.out.print("Valor final a pagar: " + valorMulta);
-                sc.nextLine();
+                System.out.println("Valor final a pagar: " + valorMulta);
                 System.out.println("¿ Desea proceder con el pago ?" + "\n1. Si" + "\n2. No");
                 System.out.print("Elija una opcion: ");
                 int confirmacion = sc.nextInt();
@@ -93,21 +110,34 @@ public class Operador extends Usuario {
                     System.out.println("*********************************************************");
                     System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
                     System.out.println("*********************************************************");
-                    ManejoArchivos.EscribirArchivo("pagos.txt", (codigoPago + " " + cedu + " " + valorMulta + " " + 'E' + " " + valorMulta + " " + "MULTA"));
+                    String facturaPagoMulta= codigoPago+","+cedu+","+valorMulta+","+"E"+","+valorMulta+","+"MULTA";
+                    ManejoArchivos.EscribirArchivo("pagos.txt", facturaPagoMulta);
+//                  Al confirmarse el pago esta linea deberia eliminar ese objeto de la lista de multa   
+                    for(Multa nu:listaMultas){
+                        
+                        int indice =listaMultas.indexOf(nu);
+                        if (cedu.equals(nu.getCedula())){
+                            listaMultas.remove(indice);
+                        }
+                    }
+//                  pero no lo hace :(
+
+
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
                     continuarPago=rsta;
-                } else {
-                    System.out.println("Muchas gracias que tenga buen dia");
+                }
+                else {
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
                     continuarPago=rsta;
                 }
 
-            } else if (transaccion == 1 && tipoPago == 2) {
-                System.out.print("Valor a pagar: " + valorMulta);
+
+            } else if (transaccion == 1 && tipoPago == 2) {   
+                System.out.println("Valor a pagar: " + valorMulta);
                 double montoFinal = valorMulta + (valorMulta * 0.1);
                 System.out.println("");
                 System.out.println("Su pago final es de: " + montoFinal);
@@ -120,14 +150,13 @@ public class Operador extends Usuario {
                     System.out.println("*********************************************************");
                     System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
                     System.out.println("*********************************************************");
-                    ManejoArchivos.EscribirArchivo("pagos.txt", (codigoPago + " " + cedu + " " + valorMulta + " " + 'T' + " " + montoFinal + " " + "MULTA"));
+                    String facturaPagoMulta= codigoPago+","+cedu+","+valorMulta+","+"T"+","+montoFinal+","+"MULTA";
+                    ManejoArchivos.EscribirArchivo("pagos.txt", facturaPagoMulta);
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
                     continuarPago=rsta;
                 } else {
-                    System.out.println("Muchas gracias que tenga buen dia");
-                    System.out.println("Muchas gracias que tenga buen dia");
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
@@ -135,10 +164,8 @@ public class Operador extends Usuario {
                 }
 
             } else if (transaccion == 2 && tipoPago == 1) {
-
-                System.out.print("Valor a pagar: ");
-                double monto = sc.nextInt();
-                sc.nextLine();
+                
+                System.out.println("Valor a pagar: "+ valorRevision);
                 System.out.println("¿ Desea proceder con el pago ?" + "\n1. Si" + "\n2. No");
                 System.out.print("Elija una opcion: ");
                 int confirmacion = sc.nextInt();
@@ -147,15 +174,13 @@ public class Operador extends Usuario {
                     System.out.println("*********************************************************");
                     System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
                     System.out.println("*********************************************************");
-
-                    ManejoArchivos.EscribirArchivo("pagos.txt", (codigoPago + " " + cedu + " " + monto + " " + 'E' + " " + monto + " " + "REVISION"));
+                    String facturaRevision= codigoPago+","+cedu+","+valorRevision+","+"E"+","+valorRevision+","+"REVISION";
+                    ManejoArchivos.EscribirArchivo("pagos.txt", facturaRevision);
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
                     continuarPago=rsta;
                 } else {
-                    System.out.println("Error de transaccion");
-                    System.out.println("Muchas gracias que tenga buen dia");
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
@@ -164,9 +189,8 @@ public class Operador extends Usuario {
 
             } else if (transaccion == 2 && tipoPago == 2) {
 
-                System.out.print("Valor a pagar: ");
-                double monto = sc.nextInt();
-                double montoFinal = monto + (monto * 0.1);
+                System.out.println("Valor a pagar: "+valorRevision);
+                double montoFinal = valorRevision + (valorRevision * 0.1);
                 System.out.println("Su pago final es de: " + montoFinal);
                 System.out.println("¿ Desea proceder con el pago ?" + "\n1. Si" + "\n2. No");
                 System.out.print("Elija una opcion: ");
@@ -176,24 +200,19 @@ public class Operador extends Usuario {
                     System.out.println("*********************************************************");
                     System.out.println("Se ha realizado el pago. Ahora puede proceder a la revion");
                     System.out.println("*********************************************************");
-
-                    ManejoArchivos.EscribirArchivo("pagos.txt", (codigoPago + " " + cedu + " " + monto + " " + 'T' + " " + montoFinal + " " + "REVISION"));
+                    String facturaRevision= codigoPago+","+cedu+","+valorRevision+","+"T"+","+montoFinal+","+"REVISION";
+                    ManejoArchivos.EscribirArchivo("pagos.txt", facturaRevision);
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
                     continuarPago=rsta;
                 } else{
-                    
-                    System.out.println("Muchas gracias que tenga buen dia");
                     System.out.println("¿ Desea realizar otros pagos ?"+"\nSi" + "\nNo");
                     System.out.println("Elija una opcion: ");
                     String rsta = sc.nextLine().toUpperCase();
                     continuarPago=rsta;
             
                 }
-         
-        
-          
            }
         }
         System.out.println("Muchas gracias. Que tenga buen dia");
@@ -236,11 +255,13 @@ public class Operador extends Usuario {
         }
     }
     
-    public void MostrarMenu(){
+    public void MostrarMenuOperador(){
+        System.out.println("|-------------- Menu del Operador ------------|");
         System.out.println("1.Registar pagos");
         System.out.println("2.Consultar multas clientes");
         System.out.println("3.Consultar usuarios");
         System.out.println("4.Salir");
+        
     }
     
     

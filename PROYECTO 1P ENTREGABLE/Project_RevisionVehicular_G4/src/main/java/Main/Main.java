@@ -5,6 +5,7 @@
 package Main;
 
 import Interfaz.SistemaVehicular;
+import static Interfaz.SistemaVehicular.*;
 
 /**
  *
@@ -12,8 +13,6 @@ import Interfaz.SistemaVehicular;
  */
 public class Main {
     public static void main(String[]args){
-        SistemaVehicular sv=new SistemaVehicular();
-        sv.IniciarSesion();
         
     }
 }

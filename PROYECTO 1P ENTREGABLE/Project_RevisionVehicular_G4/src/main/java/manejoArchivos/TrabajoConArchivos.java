@@ -5,6 +5,8 @@
  */
 package manejoArchivos;
 
+import static PaquetesEnum.prueba.modilista;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -14,16 +16,32 @@ import java.util.Date;
  */
 public class TrabajoConArchivos {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static ArrayList<String> da= new ArrayList<>();
+
+//    public static ArrayList<String> getDa() {
+//        return da;
+//    }
+//
+//    public static void setDa(ArrayList<String> da) {
+//        TrabajoConArchivos.da = da;
+//    }
+    
+    
+    
      public static void main(String[] arg) {
-        ManejoArchivos.EscribirArchivo("archivosalida.txt","Hola!");
-        ManejoArchivos.EscribirArchivo("archivosalida.txt","Afios!");
-        ManejoArchivos.EscribirArchivo("archivosalida.txt","NUevo!");
-        ManejoArchivos.LeeFichero("archivo.txt");
-        Date today = Calendar.getInstance().getTime();
-         System.out.println(today);
+        
+       
+        da.add("hola");
+        da.add("pepe");
+        da.add("maria");
+        da.add("hotgrrd");
+        System.out.println(da);
+        
+        modilista();
+        
+        
+        System.out.println(da);
+        
         
         
     }

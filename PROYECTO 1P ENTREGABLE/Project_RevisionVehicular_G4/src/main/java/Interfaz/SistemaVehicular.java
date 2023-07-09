@@ -5,7 +5,9 @@
 package Interfaz;
 
 import PaqueteUsuarios.Cliente;
+import static PaqueteUsuarios.Cliente.*;
 import PaqueteUsuarios.Operador;
+import static PaqueteUsuarios.Operador.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import PaqueteUsuarios.Usuario;
@@ -22,9 +24,12 @@ import manejoArchivos.*;
  * @author Julian Ruiz
  */
 public class SistemaVehicular {
-    public static ArrayList <Usuario> usuarios=new ArrayList<>();
-    public static ArrayList<Vehiculo> vehiculos=new ArrayList<>();
-    public static ArrayList<Multa> listaMultas = new ArrayList<>();
+    public static ArrayList <Usuario> usuarios=new ArrayList<>();  // cada elemento de este arraylist es un objeto ya sea de tipo cliente o tipo operador
+    public static ArrayList<Vehiculo> vehiculos=new ArrayList<>(); // cada elemento de este arraylist es un objeto de tipo vehiculo
+    public static ArrayList<Multa> listaMultas = new ArrayList<>(); //cada elemento de este arraylist es un objeto de tipo multa
+    
+    
+    
     
     public static void main(String[] args) {
         
@@ -57,11 +62,11 @@ public class SistemaVehicular {
             Multa m = new Multa(ced, placa, descr, valor, fechainfraccion, fechaNotificacion, puntos);
             listaMultas.add(m);
         }
-        System.out.println(listaMultas);
         
-        // A continuacion cargo la lista de usuarios con objetos tanto de tipo cliente como de tipo operador
-        // con mi archivo usuarios.txt
-        
+        /* 
+        A continuacion cargo la lista de usuarios con objetos tanto de tipo cliente como de tipo operador
+        con mi archivo usuarios.txt
+        */
         ArrayList<String> datoscli = ManejoArchivos.LeeFichero("clientes.txt");
         ArrayList<String> datosUsuarios = ManejoArchivos.LeeFichero("usuarios.txt");
         ArrayList<String> datosOperadores = ManejoArchivos.LeeFichero("operadores.txt");
@@ -107,7 +112,7 @@ public class SistemaVehicular {
 
             }
         }
-        System.out.println(usuarios);
+        
 
         // A continuacion cargo la lista de vehiculos con los datos de mi archivo vehiculos.txt
         ArrayList<String> datosVehiculo = ManejoArchivos.LeeFichero("vehiculos.txt");
@@ -126,96 +131,83 @@ public class SistemaVehicular {
             vehiculos.add(car);
 
         }
-
-        System.out.println(vehiculos);
-
-//        NO TOMAR EN CUENTA ES UN EXPERIMENTO Q ESTABA PRACTICANDO        
-//        String cedula = "1203864463";
-//        for(Multa nu:listaMultas){
-//            int posicion = listaMultas.indexOf(nu);
-//            if(nu.getCedula().equals(cedula)){
-//                listaMultas.remove(posicion);
-//            }
-//          
-//        }
         
-    }
-    
-    public static ArrayList<Usuario> getUsuarios(){
-        return SistemaVehicular.usuarios;
-    }
-    
-    public static ArrayList<Vehiculo> getVehiculos(){
-        return SistemaVehicular.vehiculos;
-    }
-    
-    public static ArrayList<Multa> getListaMultas(){
-        return SistemaVehicular.listaMultas;
-    }
-    
-      
-    
-    public void IniciarSesion(){
-        System.out.println("************************************************");
-        System.out.println("             Bienvenido al sistema              ");
-        System.out.println("************************************************");
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Usuario:");
-        String usuario=sc.nextLine();
-        System.out.println("Contrasenia:");
-        String pasword=sc.nextLine();
-        String entrada="";
-        for(Usuario u:usuarios){
-            if((usuario.equals(u.getUsuario()))&&(pasword.equals(u.getContrasenia()))){
-                if(u instanceof Cliente){
-                    Cliente c=(Cliente)u;
-                    do{
-                        c.MostrarMenu();
-                        System.out.print("Ingrese una opcion:");
-                        entrada=sc.nextLine();
-                        switch(entrada){
-                            case"1":
-                                c.consultarMulta();
-                                break;
-                            case"2":
-                                c.agendarRevision();
-                                break;
-                            case"3":
-                                System.out.println("Adios");
-                                break;
-                            default:
-                                System.out.println("Opcion invalida");
-                        }
-                    }while(!entrada.equals("3"));
-                }else{
-                    Operador o=(Operador)u;
-                    do{
-                        o.MostrarMenu();
-                        System.out.println("Ingrese una opcion");
-                        entrada=sc.nextLine();
-                        switch(entrada){
-                            case"1":
-                                o.registrarPago();
-                                break;
-                            case"2":
-                                o.consultarMulta();
-                                break;
-                            case"3":
-                                o.consultarUsuarios();
-                                break;
-                            case"4":
-                                System.out.println("Adios");
-                                break;
-                            default:
-                                System.out.println("Opcion invalida");
-                                break;
-                        }
-                    }while(!entrada.equals("4"));
+        // A continuacion presento el menu
+        boolean ingreso = false;
+        while (!ingreso){
+            System.out.println("************************************************");
+            System.out.println("             Bienvenido al sistema              ");
+            System.out.println("************************************************");
+            
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Usuario:");
+            String usuario = sc.nextLine();
+            System.out.print("Contrasenia:");
+            String pasword = sc.nextLine();
+            String entrada = "";
+            for (Usuario u : usuarios) {
+                if ((usuario.equals(u.getUsuario())) && (pasword.equals(u.getContrasenia()))) {
+                    if (u instanceof Cliente) {
+                        Cliente c = (Cliente) u;
+                        do {
+                            c.MostrarMenuUsuario();
+                            System.out.print("Ingrese una opcion:");
+                            entrada = sc.nextLine();
+                            switch (entrada) {
+                                case "1":
+                                    c.consultarMulta();
+                                    break;
+                                case "2":
+                                    c.agendarRevision();
+                                    break;
+                                case "3":
+                                    System.out.println("Que tenga buen dia");
+                                    
+                                    break;
+                                    
+                                default:
+                                    System.out.println("Opcion invalida");
+                                    break;
+                            }
+                        } while (!entrada.equals("3"));
+                            
+                    ingreso=false;
+                    break;
+                    } 
+                    else {
+                        Operador o = (Operador) u;
+                        do {
+                            o.MostrarMenuOperador();
+                            System.out.print("Ingrese una opcion:");
+                            entrada = sc.nextLine();
+                            switch (entrada) {
+                                case "1":
+                                    o.registrarPago();
+                                    break;
+                                case "2":
+                                    o.consultarMulta();
+                                    break;
+                                case "3":
+                                    o.consultarUsuarios();
+                                    break;
+                                case "4":
+                                    System.out.println("Que tenga buen dia");
+                                    break;
+                                default:
+                                    System.out.println("Opcion invalida");
+                                    break;
+                            }
+                        } while (!entrada.equals("4"));
+                         break;
+                    }
+                   
                 }
-            }else{
-                System.out.println("ERROR");
+
             }
         }
     }
-          
-}
+    
+} 
+
+
+

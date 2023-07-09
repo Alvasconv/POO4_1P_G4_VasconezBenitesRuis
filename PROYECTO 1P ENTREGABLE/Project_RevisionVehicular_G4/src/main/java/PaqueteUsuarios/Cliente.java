@@ -3,6 +3,9 @@ package PaqueteUsuarios;
 import static Interfaz.SistemaVehicular.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
 import java.util.Scanner;
 import manejoArchivos.*;
 //import static manejoArchivos.ManejoArchivos.LeeFichero;
@@ -15,6 +18,7 @@ public class Cliente extends Usuario {
     private String numTarjeta;
     private int puntosLicencia;
     public boolean multa = true;
+    public static ArrayList <Revision> revisiones=new ArrayList<>();
     
     
     
@@ -72,7 +76,11 @@ public class Cliente extends Usuario {
                 System.out.println(mult.getCedula()+" "+ mult.getPlaca()+ " " + mult.getInfraccion()+ " " + mult.getValor() +" "+mult.getFechaInfraccion() + " " + mult.getFechaNotificacion() + " "+mult.getPuntos());
                 valortotal += mult.getValor();
                         
+            }else{
+                System.out.println("USTED NO POSEE MULTAS");
+                break;
             }
+            
         }
         System.out.println("TOTAL A PAGAR: " + valortotal);
         System.out.println(" ");
@@ -83,69 +91,101 @@ public class Cliente extends Usuario {
     
     // METODO AGENDAR REVISION. NOTA " TODAVIA FALTA DE MODIFICAR COSAS ";
     public void agendarRevision(){
+     
+        String codigoRevision= String.valueOf((int)(Math.random()*5000000+1000000));
         System.out.println("*********************************************************");
         System.out.println("*                   AGENDAR REVISION                    *");
         System.out.println("*********************************************************");
+
+        // creo una lista con 20 fechas para que el usurio elija una
+        ArrayList <String> horarios = new ArrayList <>();
+        int numeroFechas = 20;
+        for (int i = 0; i < numeroFechas; i++) {
+            String numopcion= String.valueOf(i+1);
+            String hora= String.valueOf((int)(Math.random()*12+1));
+            String minuto=String.valueOf((int)(Math.random()*59+10));
+            String anio= "2023";
+            String mes = String.valueOf((int)(Math.random()*12+1));
+            String dia= String.valueOf((int)(Math.random()*31+1));
+            String turno = numopcion+". "+dia+"-"+mes+"-"+anio+"   "+hora+":"+minuto;
+            horarios.add(turno);
+        }
         Scanner sc = new Scanner (System.in);
         System.out.println("Digite su numero de placa por favor: ");
         String placa = sc.nextLine();
-        System.out.println("No tiene multas.");
-        System.out.println(" ");
-        System.out.println("             Horarios disponibles               ");
-        System.out.println("1. 10-06-2023    09:00");
-        System.out.println("2. 10-06-2023    11:00");
-        System.out.println("3. 10-06-2023    13:00");
-        System.out.println("4. 10-06-2023    15:00");
-        System.out.println("5. 11-06-2023    09:30");
-        System.out.println("6. 11-06-2023    12:00");
-        System.out.println("7. 11-06-2023    16:30");
-        System.out.println("8. 15-06-2023    09:00");
-        System.out.println("9. 15-06-2023    10:30");
-        System.out.println("10. 15-06-2023    15:30");
-        System.out.println("11. 18-06-2023    09:00");
-        System.out.println("12. 19-06-2023    09:00");
-        System.out.println("13. 19-06-2023    12:15");
-        System.out.println("14. 19-06-2023    17:30");
-        System.out.println("15. 20-06-2023    10:20");
-        System.out.println("");
-        System.out.print("Elija un horario para la revision: ");
-        int horario = sc.nextInt();
-        sc.nextLine();
+        placa = placa.toUpperCase();
         double valRevision = 150.0;
-        for (Vehiculo v : vehiculos) {
-            if (v.getPlaca().equalsIgnoreCase(placa)) {
-                for(Usuario u:usuarios){
-                    if(v.getDuenho().equals(u.getCedula())&& u.getPerfil().equals('S')){
-                        for (Multa m: listaMultas){
-                            valRevision = valRevision +(m.getPuntos()*10);
-                        }
-                    }else if (v.getDuenho().equals(u.getCedula())&& u.getPerfil().equals('E')){
-                        valRevision = valRevision - (valRevision*0.2);
-                    }
-                    
-                }       
-            }
-
-        
-        System.out.println("");
-        System.out.println("*******************************************************************************************");
-        System.out.println(v.getDuenho() + " ,se ha agendado su cita para el " + horario);
-        System.out.println("Valor a pagar: " + valRevision);
-        System.out.println("Puede pagar su cita hasta 24 horas antes de la cita. De lo contrario la cita se cancelara.");
-        System.out.println("*******************************************************************************************");
-        }
+        for (Multa m: listaMultas){
+            if (m.getPlaca().equals(placa)){
+                System.out.println("Usted posee multas pendientes, por favor acercarse a pagar");
+                
+            }else{
+ 
+                System.out.println("No tiene multas.");
+                System.out.println(" ");
+                System.out.println("              Horarios disponibles               ");
+                for ( String t : horarios){
+                    System.out.println(t);
+                }
+                System.out.println(" ");
+                System.out.print("Elija un horario para la revision: ");
+                int horario = sc.nextInt();
+                sc.nextLine();
+                
+                String horarioSeleccionado= horarios.get(horario-1);
+                
+                // estos atributos son para mi objeto de tipo revision
+                String name="null";
+                String identifi ="null";
+                String matricula="null";
+                
+                for (Vehiculo v : vehiculos) {
+                    if (v.getPlaca().equalsIgnoreCase(placa)) {
+                        String id= v.getDuenho();
+                        identifi=id;
+                        matricula=v.getPlaca();
+                        for (Usuario u : usuarios) {
+                            if (id.equals(u.getCedula()) && u.getPerfil().equals("S")) {
+                                valRevision = valRevision + (m.getPuntos() * 10);
+                                name= u.getNombre()+" "+u.getApellido();
                                 
+                            } else if (id.equals(u.getCedula()) && u.getPerfil().equals("E")) {
+                                valRevision = valRevision - (valRevision * 0.2);
+                                name= u.getNombre()+" "+u.getApellido();
+                            }
+
+                        }
+                    }
+                }   
+                
+                System.out.println("******************************************************************************************");
+                System.out.println(name+", se ha agendado su cita para el horario "+horarioSeleccionado);
+                System.out.println("Valor a pagar: "+valRevision);
+                System.out.println("Puede pagar su cita hasta 24 horas antes de la cita.");
+                System.out.println("De lo contrario la cita se cancelara.");
+                System.out.println("******************************************************************************************");
+                String ticketRevision= codigoRevision+","+m.getCedula()+","+m.getPlaca()+","+horarioSeleccionado+","+valRevision;
+                Revision review = new Revision (codigoRevision,identifi,matricula,horarioSeleccionado,valRevision);
+                revisiones.add(review);
+                ManejoArchivos.EscribirArchivo("AgendaRevisiones.txt",ticketRevision);
+            }
+        break;    
+        }
     }
+                                
+
         
     @Override
     public String toString() {
         return super.getCedula()+" "+super.getNombre()+" "+ super.getApellido()+" " + super.getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+numTarjeta+" "+ puntosLicencia +" "+super.getPerfil() ;
     }
     
-     public void MostrarMenu(){
+     public void MostrarMenuUsuario(){
+         System.out.println("|--------- MENU CLIENTES -------|");
         System.out.println("1.Consultar Multas");
-        System.out.println("2. Agendar revision tecnica");
+        System.out.println("2.Agendar revision tecnica");
         System.out.println("3.Salir");
+        
     }
  
     
