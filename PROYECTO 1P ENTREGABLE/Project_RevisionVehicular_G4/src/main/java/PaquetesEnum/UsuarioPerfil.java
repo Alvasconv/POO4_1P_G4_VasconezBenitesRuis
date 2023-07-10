@@ -6,6 +6,6 @@ package PaquetesEnum;
 
 public enum UsuarioPerfil {
     
-    C, O;
+    S, E, O;
     
 }

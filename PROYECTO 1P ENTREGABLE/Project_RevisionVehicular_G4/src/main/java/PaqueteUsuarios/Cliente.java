@@ -163,10 +163,10 @@ public class Cliente extends Usuario {
             // Excepcion usando printStackTrace() 
               except.printStackTrace();
             }
-
+            String facturaRevision= (codigoRevision+","+cedulaU+","+placa+ ","+fechaSolici+","+valRevision);
             Revision revision = new Revision(codigoRevision,cedulaU,placa, fechaSolici,valRevision);
             revisiones.add(revision);
-            ManejoArchivos.EscribirArchivo("AgendaRevisiones.txt",revision.toString());
+            ManejoArchivos.EscribirArchivo("AgendaRevisiones.txt",facturaRevision);
             
             System.out.println("");
             System.out.println("*******************************************************************************************");

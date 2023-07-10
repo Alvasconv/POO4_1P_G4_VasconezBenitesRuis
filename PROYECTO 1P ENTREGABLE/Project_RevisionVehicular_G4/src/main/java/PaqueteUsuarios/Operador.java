@@ -56,10 +56,7 @@ public class Operador extends Usuario {
            }
         System.out.println("No tiene multas");
         }
-    
-    
 
-    
     /* 
     CREACION DEL METODO REGISTRAR PAGO. NOTAA" FALTA DE HACER QUE A LO QUE REGISTRA EL PAGO LA MULTA DESAPARECE
     DE LA LISTA DE MULTAS

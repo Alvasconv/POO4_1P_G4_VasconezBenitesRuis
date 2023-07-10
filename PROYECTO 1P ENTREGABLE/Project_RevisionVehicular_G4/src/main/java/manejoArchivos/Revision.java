@@ -12,10 +12,10 @@ public class Revision {
     private String codigoRevision;
     private String cedula;
     private String placa;
-    private String fechaRevision;
+    private Date fechaRevision;
     private double valoRevision;
 
-    public Revision(String codigoRevision, String cedula, String placa, String fechaRevision,double valoRevision) {
+    public Revision(String codigoRevision, String cedula, String placa, Date fechaRevision,double valoRevision) {
         this.codigoRevision = codigoRevision;
         this.cedula = cedula;
         this.placa = placa;
@@ -26,7 +26,7 @@ public class Revision {
     public double getValoRevision() {
         return valoRevision;
     }
-
+    
     public void setValoRevision(double valoRevision) {
         this.valoRevision = valoRevision;
     }
@@ -57,13 +57,20 @@ public class Revision {
         this.placa = placa;
     }
 
-    public String getFechaRevision() {
+    public Date getFechaRevision() {
         return fechaRevision;
     }
 
-    public void setFechaRevision(String fechaRevision) {
+    public void setFechaRevision(Date fechaRevision) {
         this.fechaRevision = fechaRevision;
     }
+
+    @Override
+    public String toString() {
+        return codigoRevision+","+cedula+","+ placa+","+ fechaRevision;
+    }
+    
+    
     
     
 }
