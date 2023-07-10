@@ -5,8 +5,8 @@
 package manejoArchivos;
 import java.util.Date;
 /**
- *
- * @author vv
+ *Revision
+ * @author Angello Vasconez
  */
 public class Revision {
     private String codigoRevision;
@@ -15,6 +15,14 @@ public class Revision {
     private Date fechaRevision;
     private double valoRevision;
 
+    /**
+     * Instancia revision
+     * @param codigoRevision codigo.
+     * @param cedula cedula.
+     * @param placa placa.
+     * @param fechaRevision fecha de la rebision.
+     * @param valoRevision costo de la revision
+     */
     public Revision(String codigoRevision, String cedula, String placa, Date fechaRevision,double valoRevision) {
         this.codigoRevision = codigoRevision;
         this.cedula = cedula;
@@ -23,48 +31,52 @@ public class Revision {
         this.valoRevision = valoRevision;
     }
 
+    /**
+     *  Getter valoRevision
+     * @return valoRevision
+     */
     public double getValoRevision() {
         return valoRevision;
     }
     
-    public void setValoRevision(double valoRevision) {
-        this.valoRevision = valoRevision;
-    }
-
     
-    
+    /**
+     * Getter codigoRevision
+     * @return codigoRevision
+     */
     public String getCodigoRevision() {
         return codigoRevision;
     }
 
-    public void setCodigoRevision(String codigoRevision) {
-        this.codigoRevision = codigoRevision;
-    }
-
+    /**
+     * Getter cedula
+     * @return cedula
+     */
     public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    /**
+     * Getter placa
+     * @return placa
+     */
     public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
+    /**
+     * Getter fechaRevision
+     * @return fechaRevision
+     */
     public Date getFechaRevision() {
         return fechaRevision;
     }
 
-    public void setFechaRevision(Date fechaRevision) {
-        this.fechaRevision = fechaRevision;
-    }
 
+    /**
+     * Metodo toString.
+     * @return String
+     */
     @Override
     public String toString() {
         return codigoRevision+","+cedula+","+ placa+","+ fechaRevision;

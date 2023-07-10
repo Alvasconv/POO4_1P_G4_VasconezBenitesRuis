@@ -4,8 +4,21 @@
  */
 package PaquetesEnum;
 
+/**
+ * Enum UsuarioPerfil.
+ * @author Angello Vasconez
+ */
 public enum UsuarioPerfil {
-    
-    S, E, O;
-    
+    /**
+     * Usuario Standar.
+     */
+    S, 
+    /**
+     * Usuario Estrella.
+     */
+    E, 
+    /**
+     * Usuario Operador.
+     */
+    O; 
 }

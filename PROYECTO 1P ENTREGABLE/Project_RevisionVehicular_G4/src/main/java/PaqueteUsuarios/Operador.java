@@ -10,10 +10,25 @@ import static Interfaz.SistemaVehicular.*;
 import static PaqueteUsuarios.Cliente.*;
 import java.util.List;
 
+/**
+ * 
+ * @author Alex Benites
+ */
 public class Operador extends Usuario {
     
     private int sueldo;
    
+    /**
+     * Instancia un objeto de tipo operador
+     * @param cedula cedula del cliente.
+     * @param nombre nombre del cliente.
+     * @param apellido apellido del cliente.
+     * @param edad edad del cliente.
+     * @param usuario nick del sistema de cliente.
+     * @param contrasenia contraseña del sistema de cliente.
+     * @param sueldo sueldo del operador.
+     * @param perfil perfil de usuario.
+     */
     public Operador(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, int sueldo, String perfil) {
         super(cedula,nombre,apellido,edad,usuario,contrasenia,perfil);
         this.sueldo = sueldo;
@@ -21,16 +36,18 @@ public class Operador extends Usuario {
         
     }
     
-    // metodos getters and setters
-
+    /**
+     * Getter de sueldo
+     * @return sueldo
+     */
     public int getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(int sueldo) {
-        this.sueldo = sueldo;
-    }
-    
+    /**
+    *Este metodo le permite a un usuario de tipo operador consultar las multas
+    * por mes.
+    **/ 
     @Override 
     public void consultarMulta(){
         Scanner sc=new Scanner(System.in);
@@ -57,10 +74,11 @@ public class Operador extends Usuario {
         System.out.println("No tiene multas");
         }
 
-    /* 
-    CREACION DEL METODO REGISTRAR PAGO. NOTAA" FALTA DE HACER QUE A LO QUE REGISTRA EL PAGO LA MULTA DESAPARECE
-    DE LA LISTA DE MULTAS
-    */
+    /**
+    *Este metodo le permite a un usuario de tipo operador registrar los pagos
+    * de multas y revisiones de los clientes, con la cedula busca todas las deudas
+    * de multas y revisiones.El usuario indica que pago realizar.
+    **/ 
     public void registrarPago(){
         
         String codigoPago= String.valueOf((int)(Math.random()*500000000+100000000));
@@ -150,6 +168,7 @@ public class Operador extends Usuario {
                     System.out.println("*********************************************************");
                     String facturaPagoMulta= codigoPago+","+cedu+","+valorMulta+","+"T"+","+montoFinal+","+"MULTA";
                     ManejoArchivos.EscribirArchivo("pagos.txt", facturaPagoMulta);
+                    //Al confirmarse el pago esta linea deberia eliminar el objeto tipo multa de la lista
                     ArrayList<Multa> listaMultaCopia=new ArrayList<>();
                     for(int i =0;i<listaMultas.size();i++){
                        if(cedu.equals(listaMultas.get(i).getCedula())){
@@ -236,6 +255,11 @@ public class Operador extends Usuario {
         return super.getCedula()+" "+super.getNombre()+" "+ super.getApellido()+" " + super.getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+sueldo+" "+super.getPerfil() ;
     }
     
+    /**
+    *Este metodo le permite a un usuario de tipo operador consultar los datos de
+    * todos los usuarios.Muestra por pantalla el perfil y cedula de los clientes
+    * y de los operadores el perfil y su sueldo.
+    **/ 
     public void consultarUsuarios(){
         System.out.println("***********************************************");
         System.out.println("              CONSULTAR USUARIO                ");
@@ -265,6 +289,10 @@ public class Operador extends Usuario {
         }
     }
     
+    /**
+    *Este metodo muestra por pantalla el menu de opciones que un usuario operador
+    * puede acceder al ingresar al sistema.
+    **/ 
     public void MostrarMenuOperador(){
         System.out.println("|-------------- Menu del Operador ------------|");
         System.out.println("1.Registar pagos");

@@ -5,8 +5,8 @@
 package manejoArchivos;
 
 /**
- *
- * @author vv
+ *Representa Vehiculo
+ * @author Angello Vasconez
  */
 public class Vehiculo {
     
@@ -18,7 +18,16 @@ public class Vehiculo {
     private String color;
     private String marca;
 
-    //Constructor
+    /**
+     * Instancia Vehiculo
+     * @param duenho cedula dueño.
+     * @param placa placa.
+     * @param modelo modelo,
+     * @param marca marca.
+     * @param año año.
+     * @param chasis chasis.
+     * @param color color.
+     */
     public Vehiculo(String duenho, String placa, String modelo, String marca, int año, String chasis, String color) {
         this.duenho = duenho;
         this.placa = placa;
@@ -28,66 +37,32 @@ public class Vehiculo {
         this.color = color;
         this.marca = marca;
     }
-
-    //Getters y Setters 
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+ 
+    /**
+     * Getter duenho
+     * @return duenho
+     */
     public String getDuenho() {
         return duenho;
     }
 
-    public void setDuenho(String duenho) {
-        this.duenho = duenho;
-    }
 
+    /**
+     * Getter placa
+     * @return placa
+     */
     public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
 
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getAño() {
-        return año;
-    }
-
-    public void setAño(int año) {
-        this.año = año;
-    }
-
-    public String getChasis() {
-        return chasis;
-    }
-
-    public void setChasis(String chasis) {
-        this.chasis = chasis;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
+    /**
+     * Metodo toString.
+     * @return String
+     */
     @Override
     public String toString() {
         return duenho +" "+ placa +" "+ modelo +" "+ año +" "+ chasis +" "+ color +" "+ marca ;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 }

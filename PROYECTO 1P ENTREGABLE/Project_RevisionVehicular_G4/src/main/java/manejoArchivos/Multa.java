@@ -6,8 +6,8 @@ package manejoArchivos;
 import java.util.Date;
 
 /**
- *
- * @author vv
+ *Representa un amulta.
+ * @author Angello Vasconez
  */
 public class Multa {
 
@@ -19,6 +19,16 @@ public class Multa {
     private Date fechaInfraccion;
     private Date fechaNotificacion;
 
+    /**
+     * Instancia un objeto de tipo Multa.
+     * @param cedula cedulad del cliente.
+     * @param placa placa del vehiculo.
+     * @param infraccion descripcion de la multa.
+     * @param valor monto de la multa.
+     * @param fechaInfraccion fecha cuando ocurrio la multa.
+     * @param fechaNotificacion fecha cuando se notifico al duenho.
+     * @param puntos puntos restados al duenho.
+     */
     public Multa(String cedula,String placa,String infraccion,double valor,Date fechaInfraccion,Date fechaNotificacion,int puntos) {
         this.cedula = cedula;
         this.placa = placa;
@@ -28,63 +38,66 @@ public class Multa {
         this.fechaInfraccion = fechaInfraccion;
         this.fechaNotificacion = fechaNotificacion;
     }
-
+/**
+ * Getter de cedula
+ * @return cedula
+ */
     public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    /**
+     * Getter de placa
+     * @return placa
+     */
     public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
+    /**
+     * Getter de valor de multa
+     * @return valor
+     */
     public double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
+    /**
+     * Getter de puntos 
+     * @return puntos
+     */
     public int getPuntos() {
         return puntos;
     }
 
-    public void setPuntos(int puntos) {
-        this.puntos = puntos;
-    }
-
+    /**
+     * Getter de infraccion
+     * @return infraccion
+     */
     public String getInfraccion() {
         return infraccion;
     }
 
-    public void setInfraccion(String infraccion) {
-        this.infraccion = infraccion;
-    }
-
+    /**
+     * Getter de fechaInfraccion
+     * @return fechaInfraccion
+     */
     public Date getFechaInfraccion() {
         return fechaInfraccion;
     }
 
-    public void setFechaInfraccion(Date fechaInfraccion) {
-        this.fechaInfraccion = fechaInfraccion;
-    }
-
+    /**
+     * Getter de fechaNotificacion
+     * @return fechaNotificacion
+     */
     public Date getFechaNotificacion() {
         return fechaNotificacion;
     }
 
-    public void setFechaNotificacion(Date fechaNotificacion) {
-        this.fechaNotificacion = fechaNotificacion;
-    }
-
+    /**
+     * Metodo toString.
+     * @return string
+     */
     @Override
     public String toString() {
         return cedula + " " + placa + " " + infraccion + " " + valor +" "+fechaInfraccion + " " + fechaNotificacion + " "+puntos;

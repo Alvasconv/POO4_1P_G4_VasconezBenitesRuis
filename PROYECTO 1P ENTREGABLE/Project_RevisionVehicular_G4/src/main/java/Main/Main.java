@@ -8,10 +8,14 @@ import Interfaz.SistemaVehicular;
 import static Interfaz.SistemaVehicular.*;
 
 /**
- *
+ *Clase main donde se corre el programa.
  * @author Julian Ruiz
  */
 public class Main {
+    /**
+     * Metodo main del sistema.
+     * @param args ingreso de argumentos.
+     */
     public static void main(String[]args){
         SistemaVehicular veg= new SistemaVehicular ();
         veg.inicioSesion();

@@ -15,6 +15,11 @@ import java.util.ArrayList;
  */
 public class ManejoArchivos {
 
+    /**
+    *Este metodo permite leer elementos de tipo String de un archivos .txt.
+    * @param nombrearchivo nombre del archivo .txt de donde se cargan los datos.
+    * @return lineas devuelve una lista de Strings
+    **/ 
     public static ArrayList<String> LeeFichero(String nombrearchivo) {
         ArrayList<String> lineas = new ArrayList<>();
         File archivo = null;
@@ -54,6 +59,11 @@ public class ManejoArchivos {
 
     }
 
+    /**
+    *Este metodo permite añadir elementos de tipo String a archivos .txt.
+    * @param nombreArchivo nombre del archivo .txt donde se desea escribir.
+    * @param linea cadena de caracteres tipo String que se quiere escribir en el archivo.
+    **/ 
     public static void EscribirArchivo(String nombreArchivo, String linea) {
 
         FileWriter fichero = null;

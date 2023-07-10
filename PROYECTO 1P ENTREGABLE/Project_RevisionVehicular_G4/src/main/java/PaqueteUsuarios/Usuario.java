@@ -1,10 +1,13 @@
  
 package PaqueteUsuarios;
 
-import PaquetesEnum.UsuarioPerfil;
+//import PaquetesEnum.UsuarioPerfil;
 
-
-public class Usuario {
+/**
+ * Usuario
+ * @author Elias Benites
+ */
+public abstract class Usuario {
     
     private String cedula;
     private String nombre;
@@ -15,11 +18,16 @@ public class Usuario {
     private String contrasenia;
     private String perfil;
     
-    //CONTRUCTORES
-
-
-  
-
+    /**
+     * Instancia Usuario
+     * @param cedula cedula.
+     * @param nombre nombre.
+     * @param apellido apellido.
+     * @param edad edad.
+     * @param usuario nick usuaio sistema.
+     * @param contrasenia contraseña sistema.
+     * @param perfil tipo de usuario.
+     */
     public Usuario(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, String perfil) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
@@ -30,86 +38,83 @@ public class Usuario {
         this.perfil=perfil;
     }
     
-    
-    // Implementacion de los getters ands setters
-    
+    /**
+     * Getter perfil.
+     * @return perfil
+     */
      public String getPerfil() {
         return perfil;
     }
-
+     
+    /**
+     * Setter perfil.
+     * @param perfil perfil
+     */
     public void setPerfil(String perfil) {
         this.perfil = perfil;
     }
 
+    /**
+     * Getter cedula.
+     * @return cedula
+     */
     public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    /**
+     * Getter nombre.
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    /**
+     * Getter apellido.
+     * @return apellido
+     */
     public String getApellido() {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    /**
+     * Getter usuario.
+     * @return usuario
+     */
+    public String getUsuario() {
+        return usuario;
     }
-
+    
+    /**
+     * Getter edad.
+     * @return edad
+     */
     public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
+    /**
+     * Getter contrasenia.
+     * @return contrasenia
+     */
     public String getContrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
     
-
+    /**
+     * Metodo toString.
+     * @return String
+     */
     @Override
     public String toString() {
         return cedula + " " + nombre + " " + apellido + " " + edad + " " + correo + " " + usuario + " " + contrasenia + " " + perfil ;
     }
     
-    
-   
-    public void consultarMulta(){
-        
-    }
-    
-    
-        
+    /**
+     * Metodo abstracto para consultar multas
+     */
+    public abstract void consultarMulta();
+            
 }
-   

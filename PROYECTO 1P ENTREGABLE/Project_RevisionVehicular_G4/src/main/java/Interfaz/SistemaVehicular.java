@@ -20,20 +20,34 @@ import java.util.logging.Logger;
 import manejoArchivos.*;
 
 /**
- *
+ *Sistema Vehicular
  * @author Julian Ruiz
  */
 public class SistemaVehicular {
+    
+    /**
+    * Cada elemento de este arraylist es un objeto de tipo Usuario.
+    */
     public static ArrayList <Usuario> usuarios=new ArrayList<>();  // cada elemento de este arraylist es un objeto ya sea de tipo cliente o tipo operador
+    /**
+    * Cada elemento de este arraylist es un objeto de tipo Vehiculo.
+    */
     public static ArrayList<Vehiculo> vehiculos=new ArrayList<>(); // cada elemento de este arraylist es un objeto de tipo vehiculo
+    /**
+    * Cada elemento de este arraylist es un objeto de tipo Multa.
+    */
     public static ArrayList<Multa> listaMultas = new ArrayList<>(); //cada elemento de este arraylist es un objeto de tipo multa
     
     
     
     
-    //public static void main(String[] args) {
+    
+    /**
+     * Instancia SistemaVehicular.
+     */
     public SistemaVehicular (){    
         // A CONTINUACION PROCEDO A CARGAR MI LISTA DE MULTAS CON LOS DATOS DEL ARCHIVO MULTAS.TXT
+        
         ArrayList<String> datosMultas = ManejoArchivos.LeeFichero("multas.txt");
         
         for (String linea : datosMultas) {
@@ -133,6 +147,10 @@ public class SistemaVehicular {
         }
     } //pilas con este corchete no va    
         // A continuacion presento el menu
+    /**
+     * Este metodo genera el menu y las opciones para los usuarios y operadores
+     * y llama las variables de las otras clases
+     */
     public void inicioSesion(){
         boolean ingreso = false;
         while (!ingreso){

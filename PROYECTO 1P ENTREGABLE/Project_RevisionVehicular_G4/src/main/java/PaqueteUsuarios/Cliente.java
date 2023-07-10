@@ -10,15 +10,21 @@ import java.text.*;
 import java.util.Calendar;
 import PaquetesEnum.*;
 import Interfaz.SistemaVehicular;
-
+/**
+ * Representa un ususario de tipo cliente.
+ * 
+ * @author Alex Benites
+ */
 public class Cliente extends Usuario {
     
     private Vehiculo vehiculo;
     private String numTarjeta;
     private int puntosLicencia;
-    public boolean multa = true;
+    /**
+     * Lista de objetos tipo Revision.
+     */
     public static ArrayList <Revision> revisiones=new ArrayList<>();
-    
+
     ArrayList<Vehiculo> lvehiculos = SistemaVehicular.vehiculos;
     ArrayList<Usuario> lusuarios = SistemaVehicular.usuarios;
     String[] horarios = {"10-06-2023/09:00","10-06-2023/11:00","10-06-2023/13:00",
@@ -26,9 +32,19 @@ public class Cliente extends Usuario {
                 "11-06-2023/16:30","15-06-2023/09:00","15-06-2023/10:30","15-06-2023/15:30","18-06-2023/09:00",
             "19-06-2023/09:00","19-06-2023/12:15","19-06-2023/17:30","20-06-2023/10:20"};
     
-
-    
-    //constructor de la clase cliente
+    /**
+     * Constructor de la clase cliente.Instancia objetos tipo Cliente.
+     * @param cedula cedula del cliente.
+     * @param nombre nombre del cliente.
+     * @param apellido apellido del cliente.
+     * @param edad edad del cliente.
+     * @param usuario nick del sistema de cliente.
+     * @param contrasenia contraseña del sistema de cliente.
+     * @param numTarjeta numero de tarjeta del cliente.
+     * @param puntosLicencia puntos de licencia del cliente.
+     * @param perfil tipo de perfil del Usuario
+     * 
+     */
 
     public Cliente(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, String numTarjeta,int puntosLicencia, String perfil) {
         super(cedula, nombre,  apellido, edad, usuario, contrasenia,perfil);
@@ -36,21 +52,34 @@ public class Cliente extends Usuario {
         this.puntosLicencia = puntosLicencia;    
     }
     
-    // metodos getters and setters
+    /**
+     * Getter de atributo Vehiculo.
+     * @return Vehiculo
+     */
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
+    /**
+     * Getter de atributo numTarjeta.
+     * @return numTarjeta
+     */
     public String getNumTarjeta() {
         return numTarjeta;
     }
 
+    /**
+     * Getter de atributo puntosLicencia.
+     * @return puntosLicencia
+     */
     public int getPuntosLicencia() {
         return puntosLicencia;
     }
 
-    
-    // METODO CONSULTAR MULTA PARA EL CLIENTE///////////////////////////////////////////////////
+    /**
+     * Este metodo le permite a un usuario de tipo cliente ingresar una cedula
+     * para revisar las multas que tiene ese cliente.
+     */
     @Override
     public void consultarMulta (){
         Scanner sc = new Scanner (System.in);
@@ -78,7 +107,11 @@ public class Cliente extends Usuario {
         
     }
     
-    // METODO AGENDAR REVISION. NOTA " TODAVIA FALTA DE MODIFICAR COSAS ";
+    /**
+     * Este metodo le permite a un usuario de tipo cliente agendar revision
+     * para un vehiculo, ingresa la placa del vehiculo, escoge uno de los horarios
+     * disponibles y muestra por pantalla un resumen de la reserva.
+     */
     public void agendarRevision(){
 
         String codigoRevision= String.valueOf((int)(Math.random()*5000000+1000000));
@@ -173,9 +206,7 @@ public class Cliente extends Usuario {
             System.out.println(nombreDuenho+ " ,se ha agendado su cita para el " + fechaSolicitada[0]);
             System.out.println("Valor a pagar: " + valRevision);
             System.out.println("Puede pagar su cita hasta 24 horas antes de la cita. De lo contrario la cita se cancelara.");
-            System.out.println("*******************************************************************************************");   
-        
-        
+            System.out.println("*******************************************************************************************");        
             }
     }
                           
@@ -184,11 +215,14 @@ public class Cliente extends Usuario {
         return super.getCedula()+" "+super.getNombre()+" "+ super.getApellido()+" " + super.getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+numTarjeta+" "+ puntosLicencia +" "+super.getPerfil() ;
     }
     
+    /**
+    *Este metodo muestra por pantalla el menu de opciones que un usuario cliente
+    * puede acceder al ingresar al sistema.
+    **/ 
     public void MostrarMenuUsuario(){
         System.out.println("|--------- MENU CLIENTES -------|");
         System.out.println("1.Consultar Multas");
         System.out.println("2.Agendar revision tecnica");
         System.out.println("3.Salir");   
     }
-    
 }
