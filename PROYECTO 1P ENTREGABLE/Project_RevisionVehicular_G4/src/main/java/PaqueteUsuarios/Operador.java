@@ -8,6 +8,7 @@ import java.util.Scanner;
 import manejoArchivos.*;
 import static Interfaz.SistemaVehicular.*;
 import static PaqueteUsuarios.Cliente.*;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -68,7 +69,9 @@ public class Operador extends Usuario {
             // validamos si la cedula y placa ingresada estan en la lista de multas
                 int m = mult.getFechaInfraccion().getMonth();               
                 if(m == ind){
-                    System.out.println(mult.getCedula()+" , "+ mult.getPlaca()+ " , " + mult.getInfraccion()+ " , " + mult.getValor() +" , "+mult.getFechaInfraccion() + " , " + mult.getFechaNotificacion() + " , "+mult.getPuntos());
+                    String fechaInfraccion =new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaInfraccion());
+                    String fechaNotificacion=new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaInfraccion());
+                    System.out.println(mult.getCedula()+" | "+ mult.getPlaca()+ " | " + mult.getInfraccion()+ " | " + mult.getValor() +" | "+fechaInfraccion + " | " + fechaNotificacion + " | "+mult.getPuntos());
                 }
            }
         System.out.println("No tiene multas");

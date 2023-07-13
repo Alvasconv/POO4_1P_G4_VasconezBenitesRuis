@@ -95,7 +95,9 @@ public class Cliente extends Usuario {
         for (Multa mult : listaMultas) {
             // validamos si la cedula ingresada esta en la lista de multas
             if (ci.equals(mult.getCedula())) {
-                System.out.println(mult.getCedula()+" "+ mult.getPlaca()+ " " + mult.getInfraccion()+ " " + mult.getValor() +" "+mult.getFechaInfraccion() + " " + mult.getFechaNotificacion() + " "+mult.getPuntos());
+                String fechaInfraccion =new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaInfraccion());
+                String fechaNotifucaion =new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaNotificacion());
+                System.out.println(mult.getCedula()+" | "+ mult.getPlaca()+ " | " + mult.getInfraccion()+ " | " + mult.getValor() +" | "+fechaInfraccion + " | " + fechaNotifucaion + " | "+mult.getPuntos());
                 valortotal += mult.getValor();
             }
             
@@ -196,7 +198,7 @@ public class Cliente extends Usuario {
             // Excepcion usando printStackTrace() 
               except.printStackTrace();
             }
-            String facturaRevision= (codigoRevision+","+cedulaU+","+placa+ ","+fechaSolici+","+valRevision);
+            String facturaRevision= (codigoRevision+","+cedulaU+","+placa+ ","+fechaSolicitada[0]+","+valRevision);
             Revision revision = new Revision(codigoRevision,cedulaU,placa, fechaSolici,valRevision);
             revisiones.add(revision);
             ManejoArchivos.EscribirArchivo("AgendaRevisiones.txt",facturaRevision);

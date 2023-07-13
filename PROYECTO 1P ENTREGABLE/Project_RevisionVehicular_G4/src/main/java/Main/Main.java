@@ -5,7 +5,7 @@
 package Main;
 
 import Interfaz.SistemaVehicular;
-import static Interfaz.SistemaVehicular.*;
+
 
 /**
  *Clase main donde se corre el programa.
