@@ -1,0 +1,53 @@
+
+h
+java:S1192k"KDefine a constant instead of duplicating this literal "dd-MM-yyyy" 3 times.(¤¹†à8”ÎìŠĞ1
+ä
+java:S1192^"ÁDefine a constant instead of duplicating this literal "|------------------------------------------------------------------------------------------------------------------------------|" 3 times.(ÎÖ…ÿıÿÿÿÿ8œÎìŠĞ1
+Œ
+java:S1319"jThe type of "revisiones" should be an interface such as "List" rather than the implementation "ArrayList".(œô•ùÿÿÿÿ8ÎìŠĞ1
+x
+java:S1104"VMake revisiones a static final constant or non-public and provide accessors if needed.(œô•ùÿÿÿÿ8ŸÎìŠĞ1
+R
+java:S1444"0Make this "public static revisiones" field final(œô•ùÿÿÿÿ8¡ÎìŠĞ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Úÿï8¥ÎìŠĞ1
+?
+java:S2386"Make this member "protected".(œô•ùÿÿÿÿ8ÒĞìŠĞ1
+L	java:S106T"+Replace this use of System.out by a logger.(Óõ™ÿÿÿÿÿ8ÛĞìŠĞ1
+L	java:S106U"+Replace this use of System.out by a logger.(óº²ıÿÿÿÿ8ÛĞìŠĞ1
+L	java:S106X"+Replace this use of System.out by a logger.(ç˜Ìáøÿÿÿÿ8ÜĞìŠĞ1
+L	java:S106Y"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ÜĞìŠĞ1
+G	java:S106Z"+Replace this use of System.out by a logger.(¹ ¬æ8ÜĞìŠĞ1
+L	java:S106^"+Replace this use of System.out by a logger.(ÎÖ…ÿıÿÿÿÿ8ÜĞìŠĞ1
+G	java:S106_"+Replace this use of System.out by a logger.(óğ§¹8ÜĞìŠĞ1
+L	java:S106`"+Replace this use of System.out by a logger.(ÎÖ…ÿıÿÿÿÿ8ŞĞìŠĞ1
+L	java:S106a"+Replace this use of System.out by a logger.(³ÜŸİùÿÿÿÿ8ŞĞìŠĞ1
+L	java:S106b"+Replace this use of System.out by a logger.(ÎÖ…ÿıÿÿÿÿ8ŞĞìŠĞ1
+L	java:S106j"+Replace this use of System.out by a logger.(òİŒœşÿÿÿÿ8àĞìŠĞ1
+M	java:S106€"+Replace this use of System.out by a logger.(ä™Œşÿÿÿÿ8äĞìŠĞ1
+M	java:S106ƒ"+Replace this use of System.out by a logger.(î¾ùùÿÿÿÿ8åĞìŠĞ1
+M	java:S106„"+Replace this use of System.out by a logger.(ĞæåĞûÿÿÿÿ8åĞìŠĞ1
+M	java:S106‡"+Replace this use of System.out by a logger.(äİâÃúÿÿÿÿ8åĞìŠĞ1
+M	java:S106ˆ"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8æĞìŠĞ1
+H	java:S106™"+Replace this use of System.out by a logger.(–õß»8èĞìŠĞ1
+G	java:S106š"+Replace this use of System.out by a logger.(ñ”›A8éĞìŠĞ1
+H	java:S106›"+Replace this use of System.out by a logger.(–õß»8éĞìŠĞ1
+G
+java:S2140")Use "java.util.Random.nextInt()" instead.(£òäœ8êĞìŠĞ1
+M	java:S106¢"+Replace this use of System.out by a logger.(ÈÕ×Ëøÿÿÿÿ8êĞìŠĞ1
+H	java:S106®"+Replace this use of System.out by a logger.(š˜×Õ8ìĞìŠĞ1
+H	java:S106²"+Replace this use of System.out by a logger.(Ú¡Ü‚8íĞìŠĞ1
+p
+java:S3776·"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ç»›Ã8îĞìŠĞ1
+M	java:S106ñ"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8øĞìŠĞ1
+H	java:S106ò"+Replace this use of System.out by a logger.(•ÆÁ8øĞìŠĞ1
+M	java:S106ó"+Replace this use of System.out by a logger.(ìÄ¨‘øÿÿÿÿ8ùĞìŠĞ1
+G	java:S106ô"+Replace this use of System.out by a logger.(î›à^8ùĞìŠĞ1
+H	java:S106õ"+Replace this use of System.out by a logger.(ºÁş×8ùĞìŠĞ1
+H	java:S106ö"+Replace this use of System.out by a logger.(•ÆÁ8úĞìŠĞ1
+k	java:S100…"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Œû8şĞìŠĞ1
+M	java:S106†"+Replace this use of System.out by a logger.(É²æãÿÿÿÿÿ8şĞìŠĞ1
+H	java:S106‡"+Replace this use of System.out by a logger.(Æ±Ø8şĞìŠĞ1
+H	java:S106ˆ"+Replace this use of System.out by a logger.(À­âİ8ÿĞìŠĞ1
+M	java:S106‰"+Replace this use of System.out by a logger.(Óâ•ÿÿÿÿÿ8ÿĞìŠĞ1
+K
+java:S1128")Remove this unused import 'PaquetesEnum'.(èüÿÿÿÿÿ8ÿĞìŠĞ1

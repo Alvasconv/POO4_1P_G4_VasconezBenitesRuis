@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import PaqueteUsuarios.UsuarioDatos;
 import manejoArchivos.*;
 
 /**
@@ -91,6 +93,7 @@ public class SistemaVehicular {
                 String nombre = elementos[1];
                 String apellido = elementos[2];
                 int edad = Integer.parseInt(elementos[3]);
+                UsuarioDatos usuarioDatos = new UsuarioDatos(ced,nombre,apellido,edad);
                 String usuario = elementos[5];
                 String contraseña = elementos[6];
                 String perfi = elementos[7];
@@ -99,7 +102,7 @@ public class SistemaVehicular {
                     if (Arrays.asList(cli).contains(ced)) {
                         String tarj = (cli[1]);
                         int ptslicencia = Integer.parseInt(cli[2]);
-                        Usuario usu = new Cliente(ced, nombre, apellido, edad, usuario, contraseña, tarj, ptslicencia, perfi);
+                        Usuario usu = new Cliente(usuarioDatos, usuario, contraseña, tarj, ptslicencia, perfi);
                         usuarios.add(usu);
                     }
                 }
@@ -112,6 +115,7 @@ public class SistemaVehicular {
                 String nombre = elementos[1];
                 String apellido = elementos[2];
                 int edad = Integer.parseInt(elementos[3]);
+                UsuarioDatos usuarioDatos = new UsuarioDatos(ced,nombre,apellido,edad);
                 String usuario = elementos[5];
                 String contraseña = elementos[6];
                 String perfi = elementos[7];
@@ -119,7 +123,7 @@ public class SistemaVehicular {
                     String[] eleOP = lineOP.trim().split(",");
                     if (Arrays.asList(eleOP).contains(ced)) {
                         int suel = Integer.parseInt(eleOP[1]);
-                        Usuario usu = new Operador(ced, nombre, apellido, edad, usuario, contraseña, suel, perfi);
+                        Usuario usu = new Operador(usuarioDatos, usuario, contraseña, suel, perfi);
                         usuarios.add(usu);
                     }
                 }

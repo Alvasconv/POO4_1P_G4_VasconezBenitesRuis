@@ -16,25 +16,20 @@ import java.util.List;
  * @author Alex Benites
  */
 public class Operador extends Usuario {
-    
     private int sueldo;
    
     /**
      * Instancia un objeto de tipo operador
-     * @param cedula cedula del cliente.
-     * @param nombre nombre del cliente.
-     * @param apellido apellido del cliente.
-     * @param edad edad del cliente.
+     * @param usuarioDatos datos del circuito.
      * @param usuario nick del sistema de cliente.
      * @param contrasenia contraseña del sistema de cliente.
      * @param sueldo sueldo del operador.
      * @param perfil perfil de usuario.
      */
-    public Operador(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, int sueldo, String perfil) {
-        super(cedula,nombre,apellido,edad,usuario,contrasenia,perfil);
+    public Operador(UsuarioDatos usuarioDatos,String usuario, String contrasenia, int sueldo, String perfil) {
+        super(usuarioDatos,usuario,contrasenia,perfil);
         this.sueldo = sueldo;
-        
-        
+
     }
     
     /**
@@ -255,7 +250,9 @@ public class Operador extends Usuario {
     }
     @Override
     public String toString() {
-        return super.getCedula()+" "+super.getNombre()+" "+ super.getApellido()+" " + super.getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+sueldo+" "+super.getPerfil() ;
+        return super.usuarioDatos().getCedula()+" "+super.usuarioDatos().getNombre()+" "+
+                super.usuarioDatos().getApellido()+" " + super.usuarioDatos().getEdad()+ " " +
+                super.getUsuario()+" "+super.getContrasenia()+" "+sueldo+" "+super.getPerfil() ;
     }
     
     /**
@@ -268,18 +265,18 @@ public class Operador extends Usuario {
         System.out.println("              CONSULTAR USUARIO                ");
         System.out.println("***********************************************");
         for(Usuario u:usuarios){
-            String nom=u.getNombre();
+            String nom=u.usuarioDatos().getNombre();
             String perfil;
             String ced;
             switch (u.getPerfil()) {
                 case "S":
                     perfil="Cliente Estandar";
-                    ced=u.getCedula();
+                    ced=u.usuarioDatos().getCedula();
                     System.out.println(nom+" | "+perfil+" | "+ced);
                     break;
                 case "E":
                     perfil="Cliente Estrella";
-                    ced=u.getCedula();
+                    ced=u.usuarioDatos().getCedula();
                     System.out.println(nom+" | "+perfil+" | "+ced);
                     break;
                 default:

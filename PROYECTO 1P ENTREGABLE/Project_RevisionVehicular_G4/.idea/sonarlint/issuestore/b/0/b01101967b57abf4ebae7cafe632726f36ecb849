@@ -1,0 +1,21 @@
+
+…
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(–Èêh
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(£®¡äıÿÿÿÿ
+V
+java:S2259U"@A "NullPointerException" could be thrown; "bw" is nullable here.(÷¹ª
+b
+java:S2095""LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(Âõ–
+O
+java:S1118":Add a private constructor to hide the implicit public one.(èèıF
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Èêh
+H
+java:S11350"2Complete the task associated to this TODO comment.(Ğ¨Òí
+E
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+b	java:S100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íˆ:
+B
+java:S1481G"'Remove this unused "pw" local variable.(±»ƒÅøÿÿÿÿ
+V	java:S125T"<This block of commented-out lines of code should be removed.(åçëÑøÿÿÿÿ
+E
+java:S2093H"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ

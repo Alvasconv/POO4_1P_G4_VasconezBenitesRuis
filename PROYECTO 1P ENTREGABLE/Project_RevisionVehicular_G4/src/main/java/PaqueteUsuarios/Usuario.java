@@ -8,33 +8,24 @@ package PaqueteUsuarios;
  * @author Elias Benites
  */
 public abstract class Usuario {
-    
-    private String cedula;
-    private String nombre;
-    private String apellido;
-    private int edad;
-    private String correo;
+
+    private UsuarioDatos usuarioDatos;
     private String usuario;
     private String contrasenia;
     private String perfil;
     
     /**
      * Instancia Usuario
-     * @param cedula cedula.
-     * @param nombre nombre.
-     * @param apellido apellido.
-     * @param edad edad.
+     *
+     * @param usuarioDatos usuarioDatos informacion del usuario.
      * @param usuario nick usuaio sistema.
      * @param contrasenia contraseña sistema.
      * @param perfil tipo de usuario.
      */
-    public Usuario(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, String perfil) {
+    public Usuario(UsuarioDatos usuarioDatos,String usuario, String contrasenia, String perfil) {
+        this.usuarioDatos = usuarioDatos;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.edad = edad;
         this.perfil=perfil;
     }
     
@@ -54,28 +45,8 @@ public abstract class Usuario {
         this.perfil = perfil;
     }
 
-    /**
-     * Getter cedula.
-     * @return cedula
-     */
-    public String getCedula() {
-        return cedula;
-    }
-
-    /**
-     * Getter nombre.
-     * @return nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * Getter apellido.
-     * @return apellido
-     */
-    public String getApellido() {
-        return apellido;
+    public UsuarioDatos usuarioDatos(){
+        return usuarioDatos;
     }
 
     /**
@@ -85,14 +56,8 @@ public abstract class Usuario {
     public String getUsuario() {
         return usuario;
     }
-    
-    /**
-     * Getter edad.
-     * @return edad
-     */
-    public int getEdad() {
-        return edad;
-    }
+
+
 
     /**
      * Getter contrasenia.
@@ -109,7 +74,7 @@ public abstract class Usuario {
      */
     @Override
     public String toString() {
-        return cedula + " " + nombre + " " + apellido + " " + edad + " " + correo + " " + usuario + " " + contrasenia + " " + perfil ;
+        return usuarioDatos.toString()+ " " + usuario + " " + contrasenia + " " + perfil ;
     }
     
     /**

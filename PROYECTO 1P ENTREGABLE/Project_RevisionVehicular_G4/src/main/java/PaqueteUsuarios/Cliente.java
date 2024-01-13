@@ -34,10 +34,8 @@ public class Cliente extends Usuario {
     
     /**
      * Constructor de la clase cliente.Instancia objetos tipo Cliente.
-     * @param cedula cedula del cliente.
-     * @param nombre nombre del cliente.
-     * @param apellido apellido del cliente.
-     * @param edad edad del cliente.
+     *
+     * @param usuarioDatos UsuariosDatos del cliente.
      * @param usuario nick del sistema de cliente.
      * @param contrasenia contraseña del sistema de cliente.
      * @param numTarjeta numero de tarjeta del cliente.
@@ -46,8 +44,8 @@ public class Cliente extends Usuario {
      * 
      */
 
-    public Cliente(String cedula, String nombre, String apellido, int edad,String usuario, String contrasenia, String numTarjeta,int puntosLicencia, String perfil) {
-        super(cedula, nombre,  apellido, edad, usuario, contrasenia,perfil);
+    public Cliente(UsuarioDatos usuarioDatos ,String usuario, String contrasenia, String numTarjeta,int puntosLicencia, String perfil) {
+        super(usuarioDatos, usuario, contrasenia,perfil);
         this.numTarjeta= numTarjeta;
         this.puntosLicencia = puntosLicencia;    
     }
@@ -85,136 +83,175 @@ public class Cliente extends Usuario {
         Scanner sc = new Scanner (System.in);
         System.out.println("Por favor ingrese su cedula");
         System.out.println("Ingrese cedula: ");
-        String ci = sc.nextLine();
-        double valortotal =0;
+        bannerDetallesConsulta();
+        double valortotal = calcularPagoMultasdeUsuario(sc.nextLine());
+        System.out.println("TOTAL A PAGAR: " + valortotal);
+        System.out.println(" ");
+        System.out.println("PARA PAGAR PUEDE ACCEDER A LA AGENCIA MAS CERCANA.");
+    }
+
+    public void bannerDetallesConsulta(){
         System.out.println("|------------------------------------------------------------------------------------------------------------------------------|");
         System.out.println("|                                                 DETALLE DE MULTAS                                                            |");
         System.out.println("|------------------------------------------------------------------------------------------------------------------------------|");
         System.out.println("| CEDULA | MATRICULA | INFRACCION | VALOR A PAGAR | FECHA DE INFRACCION | FECHA DE INFRACCION | FECHA DE NOTIFICACION | PUNTOS |");
         System.out.println("|------------------------------------------------------------------------------------------------------------------------------|");
-        for (Multa mult : listaMultas) {
-            // validamos si la cedula ingresada esta en la lista de multas
-            if (ci.equals(mult.getCedula())) {
-                String fechaInfraccion =new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaInfraccion());
-                String fechaNotifucaion =new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaNotificacion());
-                System.out.println(mult.getCedula()+" | "+ mult.getPlaca()+ " | " + mult.getInfraccion()+ " | " + mult.getValor() +" | "+fechaInfraccion + " | " + fechaNotifucaion + " | "+mult.getPuntos());
-                valortotal += mult.getValor();
-            }
-            
-        }
-        System.out.println("TOTAL A PAGAR: " + valortotal);
-        System.out.println(" ");
-        System.out.println("PARA PAGAR PUEDE ACCEDER A LA AGENCIA MAS CERCANA.");
-        
-        
     }
+
+    public double calcularPagoMultasdeUsuario(String cedula){
+        double valortotal  = 0;
+        for (Multa mult : listaMultas) {
+            boolean validacionCedula  = cedula.equals(mult.getCedula());
+            if (validacionCedula) {
+                System.out.println(mult.getCedula()+" | "+ mult.getPlaca()+ " | " + mult.getInfraccion()+
+                        " | " + mult.getValor() +" | "+new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaInfraccion()) +
+                        " | " + new SimpleDateFormat("dd-MM-yyyy").format(mult.getFechaNotificacion()) + " | "+mult.getPuntos());
+                valortotal += mult.getValor();
+            }}
+        return valortotal;
+    }
+
+
+
+
     
     /**
      * Este metodo le permite a un usuario de tipo cliente agendar revision
      * para un vehiculo, ingresa la placa del vehiculo, escoge uno de los horarios
      * disponibles y muestra por pantalla un resumen de la reserva.
      */
-    public void agendarRevision(){
 
-        String codigoRevision= String.valueOf((int)(Math.random()*5000000+1000000));
-        System.out.println("*********************************************************");
-        System.out.println("*                   AGENDAR REVISION                    *");
-        System.out.println("*********************************************************");
+    public void agendarRevision(){
+        String codigoRevision= generarCodigoRevision();
+        mensajeAgendarRevision();
         Scanner sc = new Scanner (System.in);
         System.out.println("Digite su numero de placa por favor: ");
         String placa = sc.nextLine();
-        boolean debeMulta=false;
-        
-        for (Multa mult : listaMultas) {
-            // validamos si la placa ingresada esta en la lista de multas
-            if (placa.equalsIgnoreCase(mult.getPlaca())) {
-                System.out.println("Lo sentimos, no puede realizar este proceso debido a que cuenta con una o mas multas vigentes.");
-                System.out.println("Por favor acerquese con un operador para poder realizar el pago correspondiente.");
-                debeMulta=true;
-                break;
-            }
+        if(tieneMultas(placa)){
+            System.out.println("Lo sentimos, no puede realizar este proceso debido a que cuenta con una o mas multas vigentes.");
+            System.out.println("Por favor acerquese con un operador para poder realizar el pago correspondiente.");
         }
-        
-        //Si el cliente no tiene multa se sigue el proceso de agendar Revision
-        if(debeMulta==false){
-            
+        else{
             System.out.println("No tiene multas.");
             System.out.println(" ");
-            System.out.println("             Horarios disponibles               ");
-            
-            //for para mostrar los horarios disponibles para la revision
-            int contador=1;
-            for(String dates:horarios){
-              String[] fechas = dates.split("/");
-              System.out.println(contador+".    "+fechas[0]+"      " + fechas[1]);
-              contador++;
-            }
-            System.out.print("Elija un horario para la revision: ");
-            int horario = sc.nextInt();
-            sc.nextLine();
+            mostrarHorariosDisponibles();
+            int horario = elegirHorario();
             //variables predefinidas
-            double valRevision = 150.0;
-            String nombreDuenho=null;
-            String cedulaU=null ;
-            
-            //Busca vehiculo para accceder a los datos del dueño/usuario
-            for (Vehiculo v : lvehiculos) {
-                if (v.getPlaca().equalsIgnoreCase(placa)) {
-                    for(Usuario u:lusuarios){
-                        //compara la cedula de cada usuario buscando la igual a la 
-                        //ced. del dueño del vehiculo con la misma placa
-                        if(v.getDuenho().equalsIgnoreCase(u.getCedula())){
-                            nombreDuenho=u.getNombre()+" "+u.getApellido();
-                            cedulaU = u.getCedula();
-                            Cliente cl = (Cliente)u;
-                            //Dependiendo el tipo de cliente se le asignara un valor a pagar
-                            if (u.getPerfil().equalsIgnoreCase("S")){
-                                valRevision = valRevision +((30-cl.getPuntosLicencia())*10);
-                            }
-                            if (u.getPerfil().equalsIgnoreCase("E")){
-                                valRevision = valRevision - (valRevision*0.2);
-                            }
-                        }                           
-                    }
-                }       
-            }
+            String nombreDuenho= obtenerNombreDueno(placa);
+            String cedulaU= obtenerCedulaDuenho(placa);
+            double valRevision =  calcularValorRevision(placa);
             String[] fechaSolicitada = horarios[horario-1].split("/");
-            
-            //Crear Variable tipo Date para asignarlo en la clase Revision
-
-            DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-
-            Date fechaSolici = null;
-            try {
-            // instancia de util.Calendar
-                Calendar cal = Calendar.getInstance();
-            // Parsing date
-              cal.setTime(formato.parse(fechaSolicitada[0]));
-              fechaSolici = cal.getTime();
-            }
-            // Catch block to handle the exceptions
-            catch (ParseException except) {
-
-            // Excepcion usando printStackTrace() 
-              except.printStackTrace();
-            }
+            Date fechaSolici = obtenerFechaSolicitada(fechaSolicitada);
             String facturaRevision= (codigoRevision+","+cedulaU+","+placa+ ","+fechaSolicitada[0]+","+valRevision);
             Revision revision = new Revision(codigoRevision,cedulaU,placa, fechaSolici,valRevision);
             revisiones.add(revision);
             ManejoArchivos.EscribirArchivo("AgendaRevisiones.txt",facturaRevision);
-            
-            System.out.println("");
-            System.out.println("*******************************************************************************************");
-            System.out.println(nombreDuenho+ " ,se ha agendado su cita para el " + fechaSolicitada[0]);
-            System.out.println("Valor a pagar: " + valRevision);
-            System.out.println("Puede pagar su cita hasta 24 horas antes de la cita. De lo contrario la cita se cancelara.");
-            System.out.println("*******************************************************************************************");        
+            mostrarInformacion(nombreDuenho,valRevision,fechaSolicitada);
             }
+        }
+    private void mensajeAgendarRevision(){
+        System.out.println("*********************************************************");
+        System.out.println("*                   AGENDAR REVISION                    *");
+        System.out.println("*********************************************************");
     }
-                          
+    private String generarCodigoRevision(){
+        return String.valueOf((int)(Math.random()*5000000+1000000));
+    }
+    private int elegirHorario() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Elija un horario para la revision: ");
+        return sc.nextInt();
+    }
+    private boolean tieneMultas(String placa) {
+        for (Multa mult : listaMultas) {
+            if (placa.equalsIgnoreCase(mult.getPlaca())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void mostrarHorariosDisponibles(){
+        System.out.println("             Horarios disponibles               ");
+        int contador=1;
+        for(String dates:horarios){
+            String[] fechas = dates.split("/");
+            System.out.println(contador+".    "+fechas[0]+"      " + fechas[1]);
+            contador++;
+        }
+    }
+
+    private double calcularValorRevision(String placa) {
+        double valRevision = 150.0;
+        for (Vehiculo v : lvehiculos) {
+            boolean validarPlaca = v.getPlaca().equalsIgnoreCase(placa);
+            if (validarPlaca) {
+                for (Usuario u : lusuarios) {
+                    boolean validarCedula =  v.getDuenho().equalsIgnoreCase(u.usuarioDatos().getCedula());
+                    if (validarCedula) {
+                        Cliente cl = (Cliente) u;
+                        if (u.getPerfil().equalsIgnoreCase("S")) {
+                            valRevision = valRevision + ((30 - cl.getPuntosLicencia()) * 10);
+                        }
+                        if (u.getPerfil().equalsIgnoreCase("E")) {
+                            valRevision = valRevision - (valRevision * 0.2);
+                        }
+                    }
+                }
+            }
+        }
+        return valRevision;
+    }
+    private Date obtenerFechaSolicitada(String[] fechaSolicitada) {
+        DateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaSolici = null;
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(formato.parse(fechaSolicitada[0]));
+            fechaSolici = cal.getTime();
+        } catch (ParseException except) {
+            except.printStackTrace();
+        }
+        return fechaSolici;
+    }
+    private String obtenerNombreDueno(String placa){
+        for (Vehiculo v : lvehiculos) {
+            if (v.getPlaca().equalsIgnoreCase(placa)) {
+                for (Usuario u : lusuarios) {
+                    if (v.getDuenho().equalsIgnoreCase(u.usuarioDatos().getCedula())) {
+                        return u.usuarioDatos().getNombre() + " " + u.usuarioDatos().getApellido();
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    private String obtenerCedulaDuenho(String placa) {
+        for (Vehiculo v : lvehiculos) {
+            if (v.getPlaca().equalsIgnoreCase(placa)) {
+                for (Usuario u : lusuarios) {
+                    if (v.getDuenho().equalsIgnoreCase(u.usuarioDatos().getCedula())) {
+                        return u.usuarioDatos().getCedula();
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    private void mostrarInformacion(String nombreDuenho, double valRevision,String[] fechaSolicitada){
+        System.out.println("");
+        System.out.println("*******************************************************************************************");
+        System.out.println(nombreDuenho+ " ,se ha agendado su cita para el " + fechaSolicitada[0]);
+        System.out.println("Valor a pagar: " + valRevision);
+        System.out.println("Puede pagar su cita hasta 24 horas antes de la cita. De lo contrario la cita se cancelara.");
+        System.out.println("*******************************************************************************************");
+    }
+
+
+
+
     @Override
     public String toString() {
-        return super.getCedula()+" "+super.getNombre()+" "+ super.getApellido()+" " + super.getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+numTarjeta+" "+ puntosLicencia +" "+super.getPerfil() ;
+        return super.usuarioDatos().getCedula()+" "+super.usuarioDatos().getNombre()+" "+ super.usuarioDatos().getApellido()+" " + super.usuarioDatos().getEdad()+ " " +super.getUsuario()+" "+super.getContrasenia()+" "+numTarjeta+" "+ puntosLicencia +" "+super.getPerfil() ;
     }
     
     /**
