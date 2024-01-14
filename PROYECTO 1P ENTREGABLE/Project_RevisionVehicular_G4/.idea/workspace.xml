@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="773cc3b8-b4fc-4fc6-95e4-ce3bdf8a128e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c2ce49c81c8ffc1cad379edc9424db6390e51b0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42c0774ef098a0be64fc08118d290c5c93288aef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/460506de17d28a942c0dc894fb0da460878a134a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/487a073dbe5beb9f754f5aa0acd362f887ec0845" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65aeacc68e33c9a9f86d6117290c3826b35ebd82" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/9/9937d23018c6463b288ea2a791a44ed9b499a725" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9cf181db909c987b275198793f1d8da72630094b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9e40852db132f55611b078576306678c0bd72bef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/e/aed3d77e07419ec57d24879b34700448beeb0656" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c26ab8e52ef232bb3dbc1b55b89d9d6745754ab3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cdde7dba2b9ac1e31aafb57df11b5c9ccec8e545" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0cbfc4d04d1eec42be40904d0c78ad6d5e47430" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/9/e9474516395442c440ecac38345c219e07836ad4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef6a5316ae824b401a1ad50022b585c41fdd1480" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/c/0c2ce49c81c8ffc1cad379edc9424db6390e51b0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/2/42c0774ef098a0be64fc08118d290c5c93288aef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/6/460506de17d28a942c0dc894fb0da460878a134a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/8/487a073dbe5beb9f754f5aa0acd362f887ec0845" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/5/65aeacc68e33c9a9f86d6117290c3826b35ebd82" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/9/9937d23018c6463b288ea2a791a44ed9b499a725" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/c/9cf181db909c987b275198793f1d8da72630094b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/e/9e40852db132f55611b078576306678c0bd72bef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/e/aed3d77e07419ec57d24879b34700448beeb0656" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/2/c26ab8e52ef232bb3dbc1b55b89d9d6745754ab3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/d/cdde7dba2b9ac1e31aafb57df11b5c9ccec8e545" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/0/e0cbfc4d04d1eec42be40904d0c78ad6d5e47430" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/9/e9474516395442c440ecac38345c219e07836ad4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/f/ef6a5316ae824b401a1ad50022b585c41fdd1480" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Estrategia/EstrategiaMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Estrategia/EstrategiaMenuCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Estrategia/EstrategiaMenuOperador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaz/GestionInicioSesion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Interfaz/GestionInicioSesionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Interfaz/SistemaVehicularTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/PaqueteUsuarios/ClienteTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/PaqueteUsuarios/OperadorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/PaqueteUsuarios/UsuarioTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Estrategia/EstrategiaMenu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Estrategia/EstrategiaMenuCliente.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Estrategia/EstrategiaMenuOperador.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Interfaz/GestionInicioSesion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classpath.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/PaqueteUsuarios/ClienteTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/PaqueteUsuarios/OperadorTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/PaqueteUsuarios/UsuarioTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/classpath.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/243929e4b92a0324ddb716ad76c014731a5fec6f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/243929e4b92a0324ddb716ad76c014731a5fec6f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/6714760b883574318ba37d96522be163ee596e4a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/6714760b883574318ba37d96522be163ee596e4a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b396d1fff0d9a0a2ef27764e13eb4e420479c705" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b396d1fff0d9a0a2ef27764e13eb4e420479c705" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7fe2deb295461dd89e072259514858b9013e72d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7fe2deb295461dd89e072259514858b9013e72d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/e/ce56332f125ebba376d1b4259581238345ec7c04" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/e/ce56332f125ebba376d1b4259581238345ec7c04" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AgendaRevisiones.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AgendaRevisiones.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaz/SistemaVehicular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaz/SistemaVehicular.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PaqueteUsuarios/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PaqueteUsuarios/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PaqueteUsuarios/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PaqueteUsuarios/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaz/SistemaVehicular.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaz/SistemaVehicular.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PaqueteUsuarios/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PaqueteUsuarios/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PaqueteUsuarios/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PaqueteUsuarios/Usuario.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2asiEeDuXVpGivgtAiOwTO7WJjQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/repositoriosTallerDisenio/POO4_1P_G4_VasconezBenitesRuis/PROYECTO 1P ENTREGABLE/Project_RevisionVehicular_G4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Interfaz" />
+      <recent name="PaqueteUsuarios" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.GestionInicioSesionTest">
+    <configuration name="ClienteTest.consultarMulta" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_RevisionVehicular_G4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="PaqueteUsuarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="PaqueteUsuarios" />
+      <option name="MAIN_CLASS_NAME" value="PaqueteUsuarios.ClienteTest" />
+      <option name="METHOD_NAME" value="consultarMulta" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GestionInicioSesionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_RevisionVehicular_G4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Interfaz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Interfaz" />
+      <option name="MAIN_CLASS_NAME" value="Interfaz.GestionInicioSesionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GestionInicioSesionTest.testInicioSesionCliente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_RevisionVehicular_G4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Interfaz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Interfaz" />
+      <option name="MAIN_CLASS_NAME" value="Interfaz.GestionInicioSesionTest" />
+      <option name="METHOD_NAME" value="testInicioSesionCliente" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SistemaVehicularTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_RevisionVehicular_G4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Interfaz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Interfaz" />
+      <option name="MAIN_CLASS_NAME" value="Interfaz.SistemaVehicularTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SistemaVehicularTest.cargarDatosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_RevisionVehicular_G4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Interfaz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Interfaz" />
+      <option name="MAIN_CLASS_NAME" value="Interfaz.SistemaVehicularTest" />
+      <option name="METHOD_NAME" value="cargarDatosTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.GestionInicioSesionTest" />
+        <item itemvalue="JUnit.GestionInicioSesionTest.testInicioSesionCliente" />
+        <item itemvalue="JUnit.ClienteTest.consultarMulta" />
+        <item itemvalue="JUnit.SistemaVehicularTest" />
+        <item itemvalue="JUnit.SistemaVehicularTest.cargarDatosTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="773cc3b8-b4fc-4fc6-95e4-ce3bdf8a128e" name="Changes" comment="" />
+      <created>1705113590519</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705113590519</updated>
+      <workItem from="1705113591712" duration="11084000" />
+      <workItem from="1705195849912" duration="4955000" />
+      <workItem from="1705254082237" duration="5798000" />
+      <workItem from="1705260477580" duration="5589000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
