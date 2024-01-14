@@ -17,6 +17,7 @@ public class Main {
      * @param args ingreso de argumentos.
      */
     public static void main(String[]args){
+        
         SistemaVehicular veg= new SistemaVehicular ();
         veg.inicioSesion();
     }
